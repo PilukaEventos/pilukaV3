@@ -50,8 +50,8 @@
 					<table>
                         <thead>
                             <tr>
-                                <td>NOME</td>
                                 <td>FOTO</td>
+                                <td>NOME</td>
                                 <td>TELEFONE</td>
                                 <td>EMAIL</td>
                                 <td>REDES</td>
@@ -68,7 +68,7 @@
                                 
                                         <tr>
                                             <td>
-                                                <img src="/img/espacos/{{--$espacos->foto--}}" alt="{{--$espacos->nomeSalao--}}">
+                                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
                                             </td>
                                             <td>{{$v->nomeSalao}}</td>
                                             <td>{{$v->telefoneSalao}}</td>

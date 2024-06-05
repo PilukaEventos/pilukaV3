@@ -31,7 +31,7 @@
                         <h1 class="heading">Registrar um novo salão</h1>
  
                         <div class="input-group">
-                            <input type="file" name="foto" id="foto" class="from-control-file" required accept="imagem/jpg, imagem/jpeg, imagem/png">
+                            <input type="file" id="foto" name="foto" class="from-control-file">
                             <!--label for="foto">Foto Salão:</label-->
                         </div>
                         

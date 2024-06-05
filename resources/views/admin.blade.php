@@ -264,6 +264,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <td>FOTO</td>
                                 <td>SALÂO</td>
                                 <td>TELEFONE</td>
                                 <td>EMAIL</td>
@@ -280,6 +281,9 @@
                                     @foreach($espacos as $v)
                                 
                                         <tr>
+                                            <td>
+                                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
+                                            </td>
                                             <td>{{$v->nomeSalao}}</td>
                                             <td>{{$v->telefoneSalao}}</td>
                                             <td>{{$v->emailSalao}}</td>
@@ -306,7 +310,7 @@
                                                     <!--?php
                                                         }elseif (isset($_SESSION['id_gerente']) || isset($_SESSION['id_admin'])) {
                                                     ?>
-                                                            <a href="./editar_servico.php?id=$id">
+                                                            <a href="/espacos/editar$id">
                                                                 <span class="icon">
                                                                     <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
                                                                 </span>

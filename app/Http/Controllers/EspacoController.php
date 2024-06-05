@@ -34,12 +34,12 @@ class EspacoController extends Controller
         $espaco->redesSalao = $request->redesSalao;
 
         //Image upload
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()){
-            $requestImage = $request->image;
+        if($request->hasFile('foto') && $request->file('foto')->isValid()){
+            $requestImage = $request->foto;
             $extension = $requestImage->extension();
-            $imageName = md5($requestFoto->getClienteOriginalName().strtotime("now")) .".".$extension;
+            $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) .".".$extension;
             $requestImage->move(public_path('img/espacos'), $imageName);
-            $espaco->image = $imageName;
+            $espaco->foto = $imageName;
         }
 
         $espaco->save();
