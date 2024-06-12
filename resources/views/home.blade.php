@@ -1,5 +1,5 @@
 @extends('layouts.homeLayout')
-@section('title', 'Sistema de Gestão de Salões de Eventos e Serviços PILUKA')
+@section('title', 'Sistema de Gestão de Salões de Eventos e Serviços - PILUKA')
 @section('content')
 
     <!-- home -->
@@ -62,18 +62,14 @@
                     <p>salão <span>*</span></p>
                     <select name="nomeEsp" id="nomeEsp" class="input">
                         <option value="0">Selecionar</option>
-                        <!--?php
-                            if (empty(isset($espacos))) {
-                                echo 'Ainda não há salões registrados aqui!';
-                            }else {
-                                foreach ($espacos as $value) {
-                        ?>
-                                <option value="<!?php echo $value['idEsp']; ?>"><!?php echo $value['nomeEsp']; ?></option>
+                            @if (empty(isset($espacos))) 
+                               @php echo 'Ainda não há salões registrados aqui!'; @endphp
+                            @else
+                                @foreach ($espacos as $e)
+                                <option value="{{$e->id}}">{{$e->nomeSalao}}</option>
                           
-                        <!?php
-                                }
-                            }
-                        ?-->
+                                @endforeach
+                            @endif
                     </select>
                 </div>
 
@@ -99,35 +95,32 @@
         <h1 class="heading"  data-tooltip="os nossos salões de eventos">salões</h1>
         <div class="swiper room-slider">
             <div class="swiper-wrapper">
-            <!--?php
-				    if (empty($espacos)) {
-                echo 'Ainda não há salões registrados aqui!';
-                }else {
-                foreach ($espacos as $value) {
-            ?-->
-                    <div class="swiper-slide slide">
-                        <div class="image">
-                            <img src="/admin/assets/imagens/saloes/<!--?php echo $value['foto_capa']; ?-->" alt="">
-                        </div>
-                        <div class="content"><br/>
-                            <h3><!--?php echo $value['nomeEsp']; ?--></h3>
-                            <p>Sobre: <span><!--?php echo $value['descricaoEsp']; ?--></span></p><br>
-                            <div class="stars">
-                            <!--?php
-                                for ($i=0; $i < $comentario['estrelas']; $i++) {
-                            ?>      
-                                    <i class="fas fa-star"></i>
-                            <!?php
-                                } 
-                            ?-->
+                @if (empty($espacos))
+                    <p>Ainda não há salões registrados aqui!</p>
+                @else
+                    @foreach ($espacos as $v)
+                        <div class="swiper-slide slide">
+                            <div class="image">
+                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
+                                <div class="stars">
+                                    <!--?php
+                                        for ($i=0; $i < $comentario['estrelas']; $i++) {
+                                    ?-->      
+                                            <i class="fas fa-star"></i>
+                                    <!--?php
+                                        } 
+                                    ?-->
+                                </div>
                             </div>
-                            <center><a href="/salao?id=<!--?php echo $value['idEsp']; ?-->" class="btn">saiba mais</a></center>
+                            <div class="content"><br/>
+                                <h3>{{$v->nomeSalao}}</h3>
+                                <p>Sobre: <span>{{$v->sobreSalao}}</span></p><br>
+                                <p>Contacto: <span>{{$v->telefoneSalao}}</span></p><br>
+                                <center><a href="/home/salao?id={{ $v->id}}" class="btn">saiba mais</a></center>
+                            </div>
                         </div>
-                    </div>
-			    <!--?php
-				    }
-                }
-            ?-->
+			        @endforeach
+                @endif
             </div>
 
             <div class="swiper-pagination"></div>
