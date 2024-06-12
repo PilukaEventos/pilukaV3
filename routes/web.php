@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EspacoController;
 
-Route::get('/', [AdminController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index']);
 
 Route::get('/espaco', [EspacoController::class, 'index']);
 Route::get('/espaco/novo', [EspacoController::class, 'novo']);
