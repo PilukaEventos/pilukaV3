@@ -19,8 +19,8 @@ class EspacoController extends Controller
         return view('espacos.novo');
     }
 
-    public function novo_plano(){
-        return view('espacos.novo_plano');
+    public function create_plano(){
+        return view('espacos.create_plano');
     }
 
     public function store(Request $request){

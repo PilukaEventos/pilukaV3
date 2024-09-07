@@ -45,7 +45,7 @@
                     <!--?php
                         }
                     ?-->
-                        <a href="/espaco/novo_plano" class="btn">novo plano</a>
+                        <a href="/espaco/create_plano" class="btn">novo plano</a>
                 </div>
 					<table>
                         <thead>

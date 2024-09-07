@@ -11,7 +11,7 @@ Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/espaco', [EspacoController::class, 'index']);
 Route::get('/espaco/novo', [EspacoController::class, 'novo']);
 Route::get('/espaco/{$id}', [EspacoController::class, 'show']);
-Route::get('/espaco/novo_plano', [EspacoController::class, 'novo_plano']);
+Route::get('/espaco/create_plano', [EspacoController::class, 'create_plano']);
 Route::post('/espaco', [EspacoController::class, 'store']);
 
 Route::get('/agendar', function () {

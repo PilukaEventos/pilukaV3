@@ -20,7 +20,7 @@
     <!-- custom css link -->
    
     <!-- link font-awesome 6.0.0 css cdn -->
-    <link rel="stylesheet" href="./css/all.min.css"-->
+    <link rel="stylesheet" href="./css/all.min.css">
    
     <!-- link lightgallery css cdn -->
     <link rel="stylesheet" href="./css/lightgallery.min.css">
@@ -30,6 +30,8 @@
    
     <!-- link custom css -->
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/atualizacaonomenu.css">
+    <link rel="stylesheet" href="./css/mobileMode.css">
 
     <title>@yield('title')</title>
    
@@ -39,9 +41,24 @@
     <!-- header -->
     <header class="header">
 
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
+            <!-- Sub Menu-->
+            <nav id="categoria">
+                <ul style="bg-color:grey;">
+                    <hr/>   
+                    <li><a href="#"><h6>Salões</h6></a></li> |
+                    <li><a href="#"><h6>Decorações</h6></a></li> |
+                    <li><a href="#"><h6>Fotografos</h6></a></li> |
+                    <li><a href="#"><h6>Djs</h6></a></li>|
+                    <li><a href="#"><h6>Buffet</h6></a></li>
+                    <hr/>
+                </ul>
+            </nav>
+            <!-- End Sub Menu-->
             <a href="./index" class="logo"><img src="./img/dancing2.png"></a>
             <a href="./index">home</a>
+            <input type="checkbox" href="#" id="submenu">
+            <label for="submenu"><a>Categoria</a></label>
             <!--a href="./servico">serviços</a>
             <a href="./salao">salões</a-->
             <a href="./sobre">sobre nós</a>
@@ -79,9 +96,25 @@
                 <label for="switch-mode" class="switch-mode"></label>
         </nav>
         <!-- Para que o swiper funcione -->
-        <div class="icons">
-            <div class="fas fa-bars" id="menu-btn"></div>
-        </div>
+          <div class="navbarMobile">
+            <input type="checkbox" id="chec">
+            <label for="chec"><i class="fas fa-bars"></i></label>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode">switch-Mode</label>
+            <div id="menu-Btn">
+               <nav>
+                  <ul>
+                     <li><a href=""> HOME </a></li>
+                     <li><a href=""> CATEGORIAS</a></li>
+                     <li><a href=""> REGISTAR-SE </a></li>
+                     <li><a href=""> SOBRE NOS</a></li>
+                     <hr>
+                     <li><a href=""> ENTRAR</a></li>
+                     <hr>
+                  </ul>
+               </nav>
+            </div>
+         </div>
         <!-- NAVBAR -->
     </header>
 
@@ -140,6 +173,7 @@
     <script src="./js/jquery.min.js"></script>
    
     <script src="./js/funcoes.js"></script>
+    <script src="./js/atualizacaonomenu.js"></script>
     <script src="./js/home.js"></script>
     <script>
         lightGallery(document.querySelector('.gallery .gallery-container'));

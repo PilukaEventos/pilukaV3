@@ -220,11 +220,12 @@ header .navbar #switch-mode:checked + .switch-mode::before {
 .home{
     padding: 0;
     min-height: 100vh;
-    display: flex;
+    display: flexbox;
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
     position: relative;
+    box-sizing: border-box;
 }
 
 .home .content{
@@ -546,13 +547,17 @@ header .navbar #switch-mode:checked + .switch-mode::before {
 }
 
 /************* Salões ****************/
+.salao{
+    display: flexbox;
+    box-sizing: border-box;
+}
+
 .salao .box-container{
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(16rem,1fr));
     gap: 2rem;
-    display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -1300,7 +1305,11 @@ h1::before{
     overflow: hidden;
     transition: 300ms all ease-in;
 }
-
+/*
+#menu-Btn nav{
+    display: none;
+}
+*/
 h1:hover::before{
     clip-path: circle(40rem at center);
     top: -100%;

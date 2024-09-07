@@ -1,0 +1,61 @@
+/************* alteração no header ************/
+
+/*
+.header .navbar{
+    width: 100%;
+	height: 10rem;
+	background: var(--light);
+    box-shadow: var(--box-shadow);
+    -webkit-transition: 2s;
+	display: flex;
+	align-items: center;
+    justify-content: space-between;
+	grid-gap: 24px;
+	top: -2.1rem;
+	left: 0;
+    right: 0;
+	z-index: 1000;
+    position: fixed;
+    text-transform: uppercase;
+    padding: 1rem 4%;
+	border-bottom-left-radius:25%;
+	border-bottom-right-radius: 25%;
+    border-bottom: .4rem solid var(--yellow);
+}
+
+*/
+/*******************Sub menu categoria*************************/
+nav#categoria {
+    float: left;
+    left: 2%;
+    width: 100%;
+    height:auto;
+    margin: 0;
+    position: absolute;
+    transition:2s;
+    justify-content: center;
+    z-index: 1;
+}
+
+nav#categoria ul{
+    width: 100%;
+    margin: 1px 0px;
+    top:-6rem;
+    list-style: none;
+    position: absolute;
+    padding-left:-40%;
+    box-sizing: border-box;
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    
+}
+nav#categoria  ul li{
+    width:10%;
+    height:auto;
+    display: inline-block;
+    position: relative;
+    padding:3px;
+    border:none;
+}
+input[type="checkbox"]{display: none;}
