@@ -22,7 +22,7 @@
 
         <!-- SIDEBAR -->
         <section id="sidebar">
-            <a href="./index.php" class="brand">
+            <a href="./.php" class="brand">
                 <img src="../img/dancing2.png" alt="logo do piluka">
                 <span class="text">PILUKA</span>
             </a>
@@ -153,7 +153,7 @@
                 ?>
                         <ul class="side-menu top">
                             <li class="active">
-                                <a href="./index.php">
+                                <a href="./.php">
                                     <i class='bx bxs-dashboard' ></i>
                                     <span class="text">Inicio</span>
                                 </a>
@@ -185,7 +185,7 @@
                         </ul>
                         <ul class="side-menu">
                             <li>
-                                <a href="../index.php">
+                                <a href="../.php">
                                     <i class='bx bxs-home' ></i>
                                     <span class="text">Home</span>
                                 </a>
@@ -202,7 +202,7 @@
                 ?>
                         <ul class="side-menu top">
                             <li class="active">
-                                <a href="./index.php">
+                                <a href="./.php">
                                     <i class='bx bxs-dashboard' ></i>
                                     <span class="text">Inicio</span>
                                 </a>
@@ -228,7 +228,7 @@
                         </ul>
                         <ul class="side-menu">
                             <li>
-                                <a href="../index.php">
+                                <a href="../.php">
                                     <i class='bx bxs-home' ></i>
                                     <span class="text">Home</span>
                                 </a>

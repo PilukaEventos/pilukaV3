@@ -55,13 +55,13 @@
                 </ul>
             </nav>
             <!-- End Sub Menu-->
-            <a href="./index" class="logo"><img src="./img/dancing2.png"></a>
-            <a href="./index">home</a>
+            <a href="./" class="logo"><img src="./img/dancing2.png"></a>
+            <a href="./">home</a>
             <input type="checkbox" href="#" id="submenu">
             <label for="submenu"><a>Categoria</a></label>
             <!--a href="./servico">serviços</a>
             <a href="./salao">salões</a-->
-            <a href="./sobre">sobre nós</a>
+            <a href="./home/sobre">sobre nós</a>
                <!--?php 
                   if (isset($informacoes)) {//tem uma sessão
                ?->
@@ -133,12 +133,12 @@
             </div>
 
             <div class="box">
-                <a href="./index" class="logo"><img src="./img/dancing2.png"></a>
+                <a href="./" class="logo"><img src="./img/dancing2.png"></a>
             </div>
 
             <div class="box">
                 <h3>Links Rápidos</h3>
-                <a href="./index"> <i class="fas fa-arrow-right"></i> home</a>
+                <a href="./"> <i class="fas fa-arrow-right"></i> home</a>
                 <!--a href="./salao"> <i class="fas fa-arrow-right"></i> salão</a>
                 <a href="./servico"> <i class="fas fa-arrow-right"></i> serviços</a-->
                 <a href="./sobre"> <i class="fas fa-arrow-right"></i> sobre nós</a>
