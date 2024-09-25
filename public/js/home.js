@@ -1,5 +1,5 @@
 /************* o modo dark ***************/
-const switchMode = document.getElementById('switch-mode');
+/*const switchMode = document.getElementById('switch-mode');
 
 switchMode.addEventListener('change', function () {
 	if(this.checked) {
@@ -21,7 +21,7 @@ window.onscroll = () => {
     menu.classList.remove('fa-times');
     navbar.classList.remove('active');
 }
-
+*/
 var swiper = new Swiper(".home-slider", {
     grabCursor:true,
     loop:true,

@@ -97,7 +97,7 @@
         </nav>
         <!-- Para que o swiper funcione -->
           <div class="navbarMobile">
-            <input type="checkbox" id="chec">
+            <input type="checkbox" id="chec" hidden>
             <label for="chec"><i class="fas fa-bars"></i></label>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode">switch-Mode</label>

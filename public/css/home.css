@@ -118,7 +118,8 @@ section{
 .btn:hover.btn:before{
 	left: 0;
 }
-
+/************* header mobile ************/
+.navbarMobile{display: none;}
 /************* header ************/
 .header .navbar{
     width: 100%;
@@ -1331,7 +1332,7 @@ h1:hover::before{
     }
 
 }
-
+/*
 @media (max-width: 768px){
 
     .sobre .row .content p{
@@ -1347,7 +1348,7 @@ h1:hover::before{
     }
 
     .fa-times{
-        transform: rotate(-180deg);
+        transform:rotate(-180deg);
     }
 
     .header .navbar{
@@ -1415,3 +1416,4 @@ h1:hover::before{
     }
 
 }
+    */
