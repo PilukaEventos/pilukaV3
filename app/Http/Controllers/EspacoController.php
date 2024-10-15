@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Espaco;
 use App\Models\Plano;
+use App\Models\Foto;
 
 class EspacoController extends Controller
 {
@@ -25,24 +26,39 @@ class EspacoController extends Controller
 
     public function store(Request $request){
         $espaco = new Espaco;
-
+        $saveFoto = new Foto;
         $espaco->nomeSalao = $request->nomeSalao;
         $espaco->telefoneSalao = $request->telefoneSalao;
         $espaco->emailSalao = $request->emailSalao;
         $espaco->moradaSalao = $request->moradaSalao;
         $espaco->sobreSalao = $request->sobreSalao;
         $espaco->redesSalao = $request->redesSalao;
-
+        $espaco->save();
         //Image upload
-        if($request->hasFile('foto') && $request->file('foto')->isValid()){
-            $requestImage = $request->foto;
+        /*
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName().strtotime("now")) .".".$extension;
-            $requestImage->move(public_path('img/espacos'), $imageName);
-            $espaco->foto = $imageName;
-        }
+            $requestImage->move(public_path('/img/teste'), $imageName);
+            $saveFoto->foto = $imageName;
+         
+         */
+        if($request->hasFile('foto') && $request->file('foto')->isValid()){
+            $requestImage = $request->foto;
+            
+            $extension = $requestImage->extension();
 
-        $espaco->save();
+            $imageName = md5($requestImage->getClientOriginalName().strtotime("now")).".".$extension;
+
+            $requestImage->move(public_path('img/teste'), $imageName);
+            
+            $saveFoto->espaco_id=$espaco->id;
+            $saveFoto->foto=$imageName;            
+
+            $saveFoto->save();
+
+            
+        }
+    
 
         return redirect('/espaco')->with('msg', 'São criado com sucesso!');
     }
