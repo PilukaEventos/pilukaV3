@@ -17,4 +17,4 @@ Route::post('/espaco', [EspacoController::class, 'store']);
 Route::get('/agendar', function () {
     return view('agendar');
 });
-Route::post('/viewDisponibility',[HomeController::class,'mostrarDisponibilidade']);
+

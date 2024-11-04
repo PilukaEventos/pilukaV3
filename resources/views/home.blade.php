@@ -53,11 +53,11 @@
 
         <div class="row">
             <div class="hero">
-                <form action="/viewDisponibility" method="POST">
+                <form action="/" method="GET">
                     @csrf
                     <div class="rows">
                         <div class="input-group">
-                                <input type="date" id="dataEvento" required>
+                                <input type="date" name="date" id="dataEvento" required>
                                 <label for="dataEvento"> data do evento</label>
                         </div>
 
@@ -65,7 +65,7 @@
                                 <select name="nomeSalao" id="nomeSalao" class="input">
                                     <option value="0">Selecionar</option>
                                     @foreach($espacos as $e)
-                                        <option value="{{$e->Salao_id}}" {{old('nomeSalao') == $e->Salao_id ? 'Selected' : ''}}>{{$e->nomeSalao}}</option>
+                                        <option value="{{$e->nomeSalao}}" {{old('nomeSalao') == $e->Salao_id ? 'Selected' : ''}}>{{$e->nomeSalao}}</option>
                                     @endforeach
                                 </select>
                                 <label for="nomeSalao">Salão</label>
@@ -81,6 +81,21 @@
                             <label for="tipoEvento">tipo de Evento</label>
                         </div>
                     </div>
+    
+                    
+                    @if(isset($agendamentos))
+                        @if(isset($dataBD))                                                    
+                                <p>A data escolhida: {{$dataBD}} , esta indisponivel neste salão, por favor tente outra data ou salão.</p>
+                        @endif
+                        @foreach($espacos as $salao)
+                            <p>{{$salao->nomeSalao}}</p>
+                        @endforeach
+  
+                    @else
+                    <p>nada para mostrar</p>
+
+                    @endif
+                    
                     <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i> RESERVAR</button></center>
                 </form>
             </div>
@@ -98,18 +113,13 @@
                     <p>Ainda não há salões registrados aqui!</p>
                 @else
                     @foreach ($espacos as $v)
+                    @foreach($fotos as $foto)
                         <div class="swiper-slide slide">
+                            
                             <div class="image">
-                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
-                                <div class="stars">
-                                    <!--?php
-                                        for ($i=0; $i < $comentario['estrelas']; $i++) {
-                                    ?-->      
-                                            <i class="fas fa-star"></i>
-                                    <!--?php
-                                        } 
-                                    ?-->
-                                </div>
+                                
+                                    <img src="/img/teste/{{$foto->foto}}" alt="{{$v->nomeSalao}}">
+            
                             </div>
                             <div class="content"><br/>
                                 <h3>{{$v->nomeSalao}}</h3>
@@ -117,7 +127,9 @@
                                 <p>Contacto: <span>{{$v->telefoneSalao}}</span></p><br>
                                 <center><a href="/home/salao?id={{ $v->id}}" class="btn">saiba mais</a></center>
                             </div>
+                            
                         </div>
+                        @endforeach
 			        @endforeach
                 @endif
             </div>
