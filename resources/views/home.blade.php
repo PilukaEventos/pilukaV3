@@ -47,49 +47,48 @@
 
     </section>
     <!-- end -->
-
     <!-- disponibilidade começa aqui -->
     <section class="disponibilidade" id="disponibilidade">
         <h1 class="heading"  data-tooltip="veja a disponibilidade da sua data desejada">disponibilidade</h1>
-        <form method="POST">
-            <div class="container">
-                <div class="box">
-                    <p>data do evento <span>*</span></p>
-                    <input type="date" name="dataEve" id="dataEve" class="input">
-                </div>
 
-                <div class="box">
-                    <p>salão <span>*</span></p>
-                    <select name="nomeEsp" id="nomeEsp" class="input">
-                        <option value="0">Selecionar</option>
-                            @if (empty(isset($espacos))) 
-                               @php echo 'Ainda não há salões registrados aqui!'; @endphp
-                            @else
-                                @foreach ($espacos as $e)
-                                <option value="{{$e->id}}">{{$e->nomeSalao}}</option>
-                          
-                                @endforeach
-                            @endif
-                    </select>
-                </div>
+        <div class="row">
+            <div class="hero">
+                <form action="/home" method="POST">
+                    @csrf
+                    <div class="rows">
+                        <div class="input-group">
+                                <input type="date" id="dataEvento" required>
+                                <label for="dataEvento"> data do evento</label>
+                        </div>
 
-                <div class="box">
-                    <p>nº convidados <span>*</span></p>
-                    <input type="number" name="numconv" class="input" placeholder="O nº de convidados">
-                </div>
-
-                <div class="box">
-                    <p>tipo evento <span>*</span></p>
-                    <input type="text" class="input" name="tipoEve"placeholder="O tipo de evento">
-                </div>
+                        <div class="input-group">
+                                <select name="nomeSalao" id="nomeSalao" class="input">
+                                    <option value="0">Selecionar</option>
+                                    @foreach($espacos as $e)
+                                        <option value="{{$e->Salao_id}}" {{old('nomeSalao') == $e->Salao_id ? 'Selected' : ''}}>{{$e->nomeSalao}}</option>
+                                    @endforeach
+                                </select>
+                                <label for="nomeSalao">Salão</label>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="number" id="numconv" required>
+                            <label for="numconv"> Nº de Convidados</label>
+                        </div>
+                    
+                        <div class="input-group">
+                            <input type="text" id="tipoEvento" required>
+                            <label for="tipoEvento">tipo de Evento</label>
+                        </div>
+                    </div>
+                    <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i> RESERVAR</button></center>
+                </form>
             </div>
-         
-            <button type="submit" class="btn">verificar disponibilidade</button>
-         
-        </form>
+        </div>
     </section>
     <!-- disponibilidade termina aqui -->
-   
+
+
     <!-- saloes -->
     <section class="salao" id="salao">
         <h1 class="heading"  data-tooltip="os nossos salões de eventos">salões</h1>

@@ -303,16 +303,117 @@ header .navbar #switch-mode:checked + .switch-mode::before {
     font-size: 5rem;
 }
 
+/**************** disponibilidade ****************/
+.disponibilidade{
+    margin-top: 7rem;
+    text-transform: uppercase;
+}
+.disponibilidade .row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    border: 1px solid var(--yellow);
+    border-radius: var(--radius);
+    box-shadow: var(--box-shadow);
+}
+.disponibilidade .row .hero{
+    width:100%;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.disponibilidade .row .hero form{
+    width: 90%;
+    max-width: 90%;
+}
+
+.disponibilidade .row .hero form .input-group{
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.disponibilidade .row .hero form input,
+.disponibilidade .row .hero form select,
+.disponibilidade .row .hero form fieldset, 
+.disponibilidade .row .hero form textarea{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    color: var(--dark);
+    background: var(--light);
+    border-radius: var(--radius);
+    border: 1px solid var(--yellow);
+    font-size: 15px;
+}
+
+.disponibilidade .row .hero form label{
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: text;
+    padding: 10px;
+    color: var(--red);
+    transition: 0.2s;
+    pointer-events: none;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.disponibilidade .row .hero form button{
+    padding: 10px 0;
+    border: 2px solid var(--dark);
+    width: 50%;
+    cursor: pointer;
+}
+
+.disponibilidade .row .hero form input:focus~label,
+.disponibilidade .row .hero form input:valid~label,
+.disponibilidade .row .hero form select:focus~label,
+.disponibilidade .row .hero form select:valid~label,
+.disponibilidade .row .hero form fieldset:focus~label,
+.disponibilidade .row .hero form fieldset:valid~label,
+.disponibilidade .row .hero form textarea:focus~label,
+.disponibilidade .row .hero form textarea:valid~label{
+    color: var(--red);
+    font-size: 14px;
+    background: var(--light);
+    border-radius: var(--radius);
+    transform: translateX(15px) translateY(-7px);
+    padding: 0 10px;
+    border-left: 3px solid var(--yellow);
+    border-right: 3px solid var(--yellow);
+    letter-spacing: 0.2em;
+}
+
+.disponibilidade .row .hero form .rows{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0rem;
+}
+
+.disponibilidade .row .hero form .rows .input-group{
+    flex-basis: 48%;
+    margin-right: 2rem;
+    justify-content: space-between;
+}
+/*********************** fim disponibilidade **********************/
+
 /************ disponibilidade *************/
-.disponibilidade form{
+/*.disponibilidade form{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
     gap: 1.5rem;
-/*    background-image: url("../img/Servicos/decoracao1.jpg");
- */   background-repeat: no-repeat;
+    background-image: url("../img/Servicos/decoracao1.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
     padding: 4rem 1rem 1rem;
@@ -360,7 +461,7 @@ header .navbar #switch-mode:checked + .switch-mode::before {
     text-transform: uppercase;
     text-align: center;
 }
-
+*/
 /**************** Planos ***************/
 .plano .table-data {
 	display: flex;
