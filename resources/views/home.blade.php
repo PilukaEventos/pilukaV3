@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="hero">
-                <form action="/home" method="POST">
+                <form action="/viewDisponibility" method="POST">
                     @csrf
                     <div class="rows">
                         <div class="input-group">

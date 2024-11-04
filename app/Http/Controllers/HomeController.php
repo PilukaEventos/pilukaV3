@@ -13,4 +13,9 @@ class HomeController extends Controller
         $planos = Plano::all();
         return view('home',['espacos'=>$espacos],['espacos'=>$planos]);
     }
+    public function mostrarDisponibilidade(){
+        
+        return view('espaco');
+    }
 }
+
