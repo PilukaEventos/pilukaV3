@@ -1,4 +1,6 @@
 
+
+
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -16,7 +18,7 @@ allSideMenu.forEach(item=> {
 		})
 		li.classList.add('active');
 	})
-});
+})
 
 
 
