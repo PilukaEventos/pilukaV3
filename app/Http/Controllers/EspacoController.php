@@ -57,9 +57,15 @@ class EspacoController extends Controller
             $saveFoto->save();
 
             
-        }
-    
+        }    
 
         return redirect('/espaco')->with('msg', 'São criado com sucesso!');
+    }
+    public function InfoEspacos(){
+        $id=request('id');
+        $saloes = Espaco::all();
+        $planos = Plano::all();
+
+        return view('sobreespaco',['saloes'=>$saloes,'id'=>$id])->with('msg', 'Seja bem vindo!');
     }
 }

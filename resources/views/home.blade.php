@@ -87,10 +87,6 @@
                         @if(isset($dataBD))                                                    
                                 <p>A data escolhida: {{$dataBD}} , esta indisponivel neste salão, por favor tente outra data ou salão.</p>
                         @endif
-                        @foreach($espacos as $salao)
-                            <p>{{$salao->nomeSalao}}</p>
-                        @endforeach
-  
                     @else
                     <p>nada para mostrar</p>
 
@@ -125,7 +121,7 @@
                                 <h3>{{$v->nomeSalao}}</h3>
                                 <p>Sobre: <span>{{$v->sobreSalao}}</span></p><br>
                                 <p>Contacto: <span>{{$v->telefoneSalao}}</span></p><br>
-                                <center><a href="/home/salao?id={{ $v->id}}" class="btn">saiba mais</a></center>
+                                <center><a href="/salao?id={{ $v->id}}" class="btn">saiba mais</a></center>
                             </div>
                             
                         </div>

@@ -61,7 +61,7 @@
             <label for="submenu"><a>Categoria</a></label>
             <!--a href="./servico">serviços</a>
             <a href="./salao">salões</a-->
-            <a href="./home/sobre">sobre nós</a>
+            <a href="./sobre">sobre nós</a>
                <!--?php 
                   if (isset($informacoes)) {//tem uma sessão
                ?->

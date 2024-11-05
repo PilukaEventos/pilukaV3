@@ -13,7 +13,8 @@ Route::get('/espaco/novo', [EspacoController::class, 'novo']);
 Route::get('/espaco/{$id}', [EspacoController::class, 'show']);
 Route::get('/espaco/create_plano', [EspacoController::class, 'create_plano']);
 Route::post('/espaco', [EspacoController::class, 'store']);
-
+Route::get('/salao/',[EspacoController::class,'InfoEspacos']);
+Route::get('/sobre',[HomeController::class,'sobre']);
 Route::get('/agendar', function () {
     return view('agendar');
 });

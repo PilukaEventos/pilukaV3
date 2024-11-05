@@ -66,6 +66,14 @@ class HomeController extends Controller
     
     
     }
+    public function sobre(){
+        $espacos = Espaco::all();
+        $agendamentos=Evento::all();
+        $planos = Plano::all();
+        $fotos = Foto::all();
+        
+        return view('sobre',['espacos'=>$espacos],['agendamentos'=>$agendamentos,'fotos'=>$fotos],['planos'=>$planos]);
+    }
         
             
         
