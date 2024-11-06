@@ -2,15 +2,16 @@
 @section('title','BEM VINDO A ESTE ESPACO')
 @section('content')
 
-@foreach($saloes as $salao)
-@endforeach
+
    <!--************ sobre **************-->
    <section class="sobre" id="sobre">
       <h1 class="heading"  data-tooltip="um pouco sobre nós">Salão de Festas {{$salao->nomeSalao}}</h1>
 
       <div class="row">
          <div class="image">
-            <img src="./admin/assets/imagens/salao/spadlaspd.jpg>">
+            @foreach($fotos as $foto)
+            @endforeach
+            <img src="./img/teste/{{$foto->foto}}">
          </div>
             <div class="content">
                 <p>Localização: <span>{{$salao->moradaSalao}}</span></p>
@@ -85,10 +86,8 @@
                   <p>data visita<span>*</span></p>
                   <input type="date" name="dataVi" id="dataVi" class="input">
                </div>
-
             </div>
             <button value="RESERVAR" class="btn" ><i class="fas fa-paper-plane">  RESERVAR</i></button>
-
          </form>
       </div>
    </section>
@@ -97,20 +96,16 @@
    <!-- gallery -->
    <section class="gallery" id="gallery">
         <h1 class="heading"  data-tooltip="as fotos do evento">fotos do salão</h1>
-        <div class="gallery-container">
-		<!--?php
-			foreach ($saloes as $value) {
-		?-->
-            <a href="./admin/assets/imagens/salao/" class="box">
-                <img src="./admin/assets/imagens/salao/" alt="">
-                <div class="icon"> <i class="fas fa-plus"></i></div>
-            </a>
+         <div class="gallery-container">
+            @foreach($fotos as $foto)
+               <a href="/" class="box">   
+                  <img src="/img/teste/{{$foto->foto}}" alt="">
+                  <div class="icon"> <i class="fas fa-plus"></i></div>
+               </a>  
+            @endforeach
+               
+         </div>   
 
-		<!--?php	
-			}
-		?-->
-
-        </div>
    </section>
    <!-- end -->
     
@@ -133,9 +128,11 @@
             </div>
       </div>
    </section>
+               --}}
    <!--************ planos ends here ***************-->
 
    <!-- Eventos  -->
+   {{--
    <section class="salao" id="salao">
       <h1 class="heading"  data-tooltip="os eventos realizados no salão">eventos realizados</h1>
       <div class="swiper room-slider">
@@ -179,10 +176,11 @@
 
       </div>
    </section>
+         --}}
    <!-- end -->
 
    <!-- servicos -->
-
+{{--
    <section class="servicos">
       <h1 class="heading"  data-tooltip="os nossos parceiros">parceiros</h1>
       <div class="swiper room-slider">

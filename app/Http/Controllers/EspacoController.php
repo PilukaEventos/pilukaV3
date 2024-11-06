@@ -61,11 +61,24 @@ class EspacoController extends Controller
 
         return redirect('/espaco')->with('msg', 'São criado com sucesso!');
     }
+    /** sobre a informação dos espacos do botão sabermais na home */
     public function InfoEspacos(){
         $id=request('id');
-        $saloes = Espaco::all();
+        
+        $salao = Espaco::findOrfail($id);
         $planos = Plano::all();
-
-        return view('sobreespaco',['saloes'=>$saloes,'id'=>$id])->with('msg', 'Seja bem vindo!');
-    }
+            /*Logica de validação para mostrar fotos */
+                $fotos=Foto::where([['espaco_id','=',$id]])->get();
+         
+                    if (isset($fotos)){
+                        
+                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,])->with('msg', 'Seja bem vindo!');
+                        
+                        return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos])->with('msg', 'Seja bem vindo!');
+                    }
+                    else {
+                        return view('sobreespaco',['salao'=>$salao,'id'=>$id])->with('msg', 'Seja bem vindo!');
+                    }
+            
+        }
 }
