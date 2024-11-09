@@ -335,6 +335,7 @@ header .navbar #switch-mode:checked + .switch-mode::before {
 .disponibilidade .row .hero form .input-group{
     margin-bottom: 20px;
     position: relative;
+    
 }
 
 .disponibilidade .row .hero form input,
@@ -1422,22 +1423,105 @@ h1:hover::before{
 }
 
 /*************** media queries *******************/
-@media (max-width:991px){
 
-    html{
-        font-size: 55%;
+/*************** MODO TABLET ******************/
+@media (max-width:930px){
+
+    .navbarMobile{
+        width:100% !important;
+        height: 10vh !important;
+        background: var(--light);
+        box-shadow: var(--box-shadow);
+        transition: 2s;
+        display:block;
+        align-items: center;
+        justify-content: space-between;
+        grid-gap: 24px;
+        z-index:100;
+        position: fixed;
+        text-transform:uppercase;
+        padding: 1rem 4%;
+        top:0;
+        left:0 !important;
+        border-bottom-left-radius:25%;
+        border-bottom-right-radius: 25%;
+        border-bottom: .4rem solid var(--red);
+        background-image:url('/img/dancing2.png');
+        background-repeat: no-repeat;
+        background-size:6rem 8rem;
+        background-position-x: center;
+        box-sizing: border-box;
+        
+    }
+    i{
+        font-size: 4rem;
+        color: var(--yellow);
+    }
+   nav{
+        margin-top: 50px;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 100%;
+        height:100rem;
+        left:-100%;
+        position: absolute;
+        transition:3s !important;
+    }
+    
+    ul{
+        width: 100%;
+        margin-top: 10px;
+        list-style: none;
+        position: absolute;
+        padding-left: 30px;
+        justify-content: space-between;
+        justify-items: center center;
+        text-align: center;
+    }
+    li{
+        width: 100%;
+        height: 8rem;
+        display: block;
+        position: relative;
+        border-radius: 10px;
+    }
+    li a{
+        font-size: 2.6rem;
+        font-family: var(--montserrat);
+        color: var(--yellow);
+        font-weight: bolder;
+        padding: 2px;
+        border-bottom: .2rem solid var(--red);
+    }
+    .switch-mode{
+        top: 10px;
+        display: inline-block;
+        float: right;
+        font-size: 1rem;
+        color: var(--yellow);
+    }
+    li a:hover{
+        font-size: 2rem;
+        color: var(--red);
+    }
+    input[type="checkbox"]{
+        display: none;
+        
     }
 
-    .header{
-        padding: 2rem 3rem;
+    label{
+        position: relative;
     }
-
-}
-/*
-@media (max-width: 768px){
+    input[type="checkbox"]:checked ~ #menuBtn nav{
+        clear: both;
+        display: block;
+        position: absolute;
+        z-index: 900;
+        transform: translateX(100%);
+        transition:3s !important;
+        }
 
     .sobre .row .content p{
-        font-size: 1.4rem;
+        font-size: 2rem;
         color: var(--dark);
         padding: 1.5rem 2rem;
         line-height: 1.8;
@@ -1445,17 +1529,20 @@ h1:hover::before{
     }
 
     #menu-btn{
-        display: inline-block;
+        display: flexbox;
     }
 
     .fa-times{
-        transform:rotate(-180deg);
+        transform: rotate(-180deg);
     }
 
     .header .navbar{
+        display: none;
         position: absolute;
-        top: 110%; right: -110%;
+        top: 110%; 
+        right: -100%;
         width: 30rem;
+        height: 120px;
         box-shadow: var(--box-shadow);
         background: var(--light);
         border-radius: .5rem;
@@ -1483,13 +1570,23 @@ h1:hover::before{
     }
 
 }
+/************ disponibilidade *************/
 
+.disponibilidade form .box p{
+    font-size: 1.4rem;
+    color: var(--red);
+    text-align: justify;
+}
+
+/*************** MODO TELEMOVEL  *******************/
 @media (max-width: 450px){
 
     html{
-        font-size: 50%;
+        font-size: 40%;
     }
-
+    i{
+        font-size: 2rem;
+    }
     .header .navbar{
         position: absolute;
         top: 1%;
@@ -1515,6 +1612,55 @@ h1:hover::before{
     .home .slide .content h3{
         font-size: 3rem;
     }
+/*disponibilidade mobile começa aqui*/
+    .disponibilidade .row .hero form{
+        width: 90%;
+        max-width: 90%;
+    }
+    
+    .disponibilidade .row .hero form .rows .input-group{
+        margin-bottom: 20px;
+        position: absolute;
+        width: 100%;
+        display: block;
+    }
+    
+    .disponibilidade .row .hero .rows .input-group form input,
+    .disponibilidade .row .hero .rows .input-group form select,
+    .disponibilidade .row .hero .rows .input-group form fieldset, 
+    .disponibilidade .row .hero .rows .input-group form textarea{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        outline: none;
+        color: var(--dark);
+        background: var(--light);
+        border-radius: var(--radius);
+        border: 1px solid var(--yellow);
+        font-size: 15px;
+        position: absolute;
+    }
+    
+    .disponibilidade .row .hero form label{
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: text;
+        padding: 10px;
+        color: var(--red);
+        transition: 0.2s;
+        pointer-events: none;
+        font-size: 1em;
+        text-transform: uppercase;
+    }
+    
+    .disponibilidade .row .hero form button{
+        padding: 10px 0;
+        border: 2px solid var(--dark);
+        width: 50%;
+        cursor: pointer;
+    }
+    
+    
 
 }
-    */

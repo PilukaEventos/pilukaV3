@@ -9,9 +9,14 @@
 
       <div class="row">
          <div class="image">
-            @foreach($fotos as $foto)
-            @endforeach
-            <img src="./img/teste/{{$foto->foto}}">
+            @if(isset($fotos))
+               @foreach($fotos as $foto)
+               <img src="./img/teste/{{$foto->foto}}">
+                @endforeach
+               
+            @else
+               <img src="./img/teste/32423423423.jpeg">
+            @endif
          </div>
             <div class="content">
                 <p>Localização: <span>{{$salao->moradaSalao}}</span></p>
@@ -97,12 +102,19 @@
    <section class="gallery" id="gallery">
         <h1 class="heading"  data-tooltip="as fotos do evento">fotos do salão</h1>
          <div class="gallery-container">
+         @if(isset($fotos))
             @foreach($fotos as $foto)
                <a href="/" class="box">   
                   <img src="/img/teste/{{$foto->foto}}" alt="">
                   <div class="icon"> <i class="fas fa-plus"></i></div>
                </a>  
             @endforeach
+         @else
+         <a href="/" class="box">   
+                  <h3>Não há fotos relacionadas a este salão por favor reporta a um admin</h3>
+                  <div class="icon"> <i class="fas fa-plus"></i></div>
+               </a>  
+         @endif
                
          </div>   
 

@@ -73,11 +73,9 @@ class EspacoController extends Controller
                     if (isset($fotos)){
                         
                             return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,])->with('msg', 'Seja bem vindo!');
-                        
-                        return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos])->with('msg', 'Seja bem vindo!');
                     }
                     else {
-                        return view('sobreespaco',['salao'=>$salao,'id'=>$id])->with('msg', 'Seja bem vindo!');
+                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,])->with('msg', 'Seja bem vindo!');
                     }
             
         }
