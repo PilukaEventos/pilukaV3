@@ -65,7 +65,7 @@
                                 <select name="nomeSalao" id="nomeSalao" class="input">
                                     <option value="0">Selecionar</option>
                                     @foreach($espacos as $e)
-                                        <option value="{{$e->nomeSalao}}" {{old('nomeSalao') == $e->Salao_id ? 'Selected' : ''}}>{{$e->nomeSalao}}</option>
+                                        <option value="{{$e->nomeEsp}}" {{old('nomeEsp') == $e->idEsp ? 'Selected' : ''}}>{{$e->nomeEsp}}</option>
                                     @endforeach
                                 </select>
                                 <label for="nomeSalao">Salão</label>
