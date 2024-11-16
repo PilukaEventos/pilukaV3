@@ -53,7 +53,7 @@ class HomeController extends Controller
             }
             else
                 {
-                    return view('home',['espacos'=>$espacos],['agendamentos'=>$agendamentos,'fotos'=>$fotos],['planos'=>$planos]);  
+                    return view('home',['espacos'=>$espacos],['fotos'=>$fotos],['planos'=>$planos]);  
                 }
             
 

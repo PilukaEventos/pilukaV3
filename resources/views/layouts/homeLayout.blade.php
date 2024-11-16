@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,7 +30,7 @@
     <!-- link custom css -->
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/atualizacaonomenu.css">
-    <link rel="stylesheet" href="./css/mobileMode.css">
+    <!--link rel="stylesheet" href="./css/mobileMode.css"-->
 
     <title>@yield('title')</title>
    

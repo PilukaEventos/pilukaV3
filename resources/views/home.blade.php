@@ -81,18 +81,14 @@
                             <label for="tipoEvento">tipo de Evento</label>
                         </div>
                     </div>
-    
-                    
                     @if(isset($agendamentos))
                         @if(isset($dataBD))                                                    
-                                <p>A data escolhida: {{$dataBD}} , esta indisponivel neste salão, por favor tente outra data ou salão.</p>
+                                <p>A data escolhida: {{$dataBD}} , não está disponivel neste salão, por favor tente outra data ou salão.</p>
                         @endif
                     @else
                     <p>nada para mostrar</p>
-
                     @endif
-                    
-                    <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i> RESERVAR</button></center>
+                    <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i>RESERVAR</button></center>
                 </form>
             </div>
         </div>
