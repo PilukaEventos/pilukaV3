@@ -30,13 +30,13 @@
 
       <h1 class="heading"  data-tooltip="Selecione um dos dias disponiveis para eventos">reserve agora</h1>
       <div>
-         <form method="POST">
+         <form method="POST" action="/reservar">
 
             <div class="container">
 
                <div class="box">
-                  <p>Nome <span>*</span></p>
-                  <input type="text" name="nomeCli" id="nomeCli" class="input" placeholder="O seu Nome">
+                  <p>Nome Completo<span>*</span></p>
+                  <input type="text" name="nomeCli" id="nomeCli" class="input" placeholder="O seu Nome Completo">
                </div>
 
                <div class="box">
@@ -144,7 +144,7 @@
       
             <p class="heading">Ainda não há registro de Serviços Realizados aqui!</p>
       @else
-			   @foreach ($servicos as $value) {
+			   @foreach ($servicos as $value)
 		
                <div class="swiper-slide slide">
                   <div class="image">
@@ -172,7 +172,7 @@
       </div>
    </section>
    <!-- end -->
-   {{--   
+   
    <!-- perguntas -->
    <section class="perguntas" id="perguntas">
       <h1 class="heading"  data-tooltip="as perguntas mais frequentes">perguntas</h1>
@@ -213,7 +213,7 @@
 
       </div>
    </section>
-   --}}
+   
    <!-- end -->
 
    <!--************ comentario **************-->
