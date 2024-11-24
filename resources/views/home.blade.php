@@ -105,23 +105,23 @@
                     <p>Ainda não há salões registrados aqui!</p>
                 @else
                     @foreach ($espacos as $v)
-                    @foreach($fotos as $foto)
+                    
                         <div class="swiper-slide slide">
                             
                             <div class="image">
                                 
-                                    <img src="/img/teste/{{$foto->foto}}" alt="{{$v->nomeSalao}}">
+                                    <img src="/img/teste/{{$v->fotoEsp}}" alt="{{$v->nomeEsp}}">
             
                             </div>
                             <div class="content"><br/>
-                                <h3>{{$v->nomeSalao}}</h3>
-                                <p>Sobre: <span>{{$v->sobreSalao}}</span></p><br>
-                                <p>Contacto: <span>{{$v->telefoneSalao}}</span></p><br>
-                                <center><a href="/salao?id={{ $v->id}}" class="btn">saiba mais</a></center>
+                                <h3>{{$v->nomeEsp}}</h3>
+                                <p>Sobre: <span>{{$v->descricaoEsp}}</span></p><br>
+                                <p>Contacto: <span>{{$v->telefoneEsp}}</span></p><br>
+                                <center><a href="/salao?id={{ $v->idEsp}}" class="btn">saiba mais</a></center>
                             </div>
                             
                         </div>
-                        @endforeach
+                    
 			        @endforeach
                 @endif
             </div>

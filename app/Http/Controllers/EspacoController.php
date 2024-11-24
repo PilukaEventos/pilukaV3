@@ -64,18 +64,23 @@ class EspacoController extends Controller
     /** sobre a informação dos espacos do botão sabermais na home */
     public function InfoEspacos(){
         $id=request('id');
+/*Logica de para consulta filtradas apartir do ID*/
+
+        $salao = Espaco::where([['idEsp','=',$id]])->get();
         
-        $salao = Espaco::findOrfail($id);
-        $planos = Plano::all();
-            /*Logica de validação para mostrar fotos */
-                $fotos=Foto::where([['espaco_id','=',$id]])->get();
+        $planos = Plano::where([['idEsp','=',$id]])->get();;
+         
+        /*Logica de validação para mostrar fotos filtradas apartir do ID*/
+                $fotos=Foto::where('idEsp','=',$id)
+                ->select('nomeImg')
+                ->get();
          
                     if (isset($fotos)){
                         
-                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,])->with('msg', 'Seja bem vindo!');
+                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,'planos'=>$planos])->with('msg', 'Seja bem vindo!');
                     }
                     else {
-                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'fotos'=>$fotos,])->with('msg', 'Seja bem vindo!');
+                            return view('sobreespaco',['salao'=>$salao,'id'=>$id,'planos'=>$planos])->with('msg', 'Seja bem vindo!');
                     }
             
         }

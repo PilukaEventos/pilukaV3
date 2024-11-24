@@ -2,31 +2,27 @@
 @section('title','BEM VINDO A ESTE ESPACO')
 @section('content')
 
-
+@foreach($salao as $s)
    <!--************ sobre **************-->
+   
    <section class="sobre" id="sobre">
-      <h1 class="heading"  data-tooltip="um pouco sobre nós">Salão de Festas {{$salao->nomeSalao}}</h1>
+      <h1 class="heading"  data-tooltip="um pouco sobre nós">Salão de Festas {{$s->nomeEsp}}</h1>
 
       <div class="row">
          <div class="image">
-            @if(isset($fotos))
-               @foreach($fotos as $foto)
-               <img src="./img/teste/{{$foto->foto}}">
-                @endforeach
                
-            @else
-               <img src="./img/teste/32423423423.jpeg">
-            @endif
+               <img src="./img/teste/{{$s->fotoEsp}}">
+            
          </div>
             <div class="content">
-                <p>Localização: <span>{{$salao->moradaSalao}}</span></p>
-                <p>Email: <span>{{$salao->emailSalao}}</span> - Telefone: <span>{{$salao->telefoneSalao}}</span></p>
-                <p>Redes Sociais: <span>{{$salao->redesSalao}}</span></p>
-                <p>Tipos de Eventos: <span>{{$salao->sobreSalao}}</span></p><br><br>
+                <p>Localização: <span>{{$s->moradaEsp}}</span></p>
+                <p>Email: <span>{{$s->emailEsp}}</span> - Telefone: <span>{{$s->telefoneEsp}}</span></p>
+                <p>Redes Sociais: <span>{{$s->redes}}</span></p>
+                <p>Tipos de Eventos: <span>{{$s->descricaoEsp}}</span></p><br><br>
             </div>
       </div>
    </section>
-   
+@endforeach   
    <!--************ sobre ends here ***************-->
 
    <!-- reserva -->
@@ -60,7 +56,7 @@
 
                <div class="box">
                   <p>salão <span>*</span></p>
-                  <input type="text" name="dataEve" id="dataEve" class="input" disabled value="<?php echo $salao['nomeEsp']; ?>">
+                  <input type="text" name="dataEve" id="dataEve" class="input" disabled value="<?php echo $s['nomeEsp']; ?>">
                </div>
 
                <div class="box">
@@ -92,7 +88,7 @@
                   <input type="date" name="dataVi" id="dataVi" class="input">
                </div>
             </div>
-            <button value="RESERVAR" class="btn" ><i class="fas fa-paper-plane">  RESERVAR</i></button>
+            <button value="RESERVAR" class="btn" ><i class="fas fa-paper-plane">CONFIRMAR RESERVAR</i></button>
          </form>
       </div>
    </section>
@@ -102,109 +98,54 @@
    <section class="gallery" id="gallery">
         <h1 class="heading"  data-tooltip="as fotos do evento">fotos do salão</h1>
          <div class="gallery-container">
-         @if(isset($fotos))
-            @foreach($fotos as $foto)
+   
+            @for($i=0; $i < 3; $i++)
                <a href="/" class="box">   
-                  <img src="/img/teste/{{$foto->foto}}" alt="">
+                  <img src="/img/teste/{{$fotos[$i]->nomeImg}}" alt="">
                   <div class="icon"> <i class="fas fa-plus"></i></div>
                </a>  
-            @endforeach
-         @else
-         <a href="/" class="box">   
-                  <h3>Não há fotos relacionadas a este salão por favor reporta a um admin</h3>
-                  <div class="icon"> <i class="fas fa-plus"></i></div>
-               </a>  
-         @endif
-               
+            @endfor
+   
          </div>   
 
    </section>
    <!-- end -->
     
    <!--************ planos **************-->
-   {{--
+   
    <section class="planos" id="planos">
-      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festas <?php echo $salao['nomeEsp']; ?></h1>
+      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festa{{$salao[0]->nomeEsp}}</h1>
 
       <div class="row">
             <div class="content">
-               <?php
-                  foreach ($salao as $s) {
-               ?>
+               
                <center>
-                  <p>Nº Convidados: <span><?php echo $s['numConv']; ?></span> - Preço: <span><?php echo $s['precoPla']; ?></span></p>
+                  <p>Nº Convidados: <span>{{$planos[0]->numConv}}</span> - Preço: <span>{{$planos[0]->precoPla}}</span></p>
                </center>
-               <?php	
-                  }
-               ?>
+               
             </div>
       </div>
    </section>
-               --}}
+   
    <!--************ planos ends here ***************-->
 
    <!-- Eventos  -->
-   {{--
-   <section class="salao" id="salao">
-      <h1 class="heading"  data-tooltip="os eventos realizados no salão">eventos realizados</h1>
-      <div class="swiper room-slider">
-         <div class="swiper-wrapper">
-         <?php
-            if (empty(isset($eventos))) {
-         ?>
-               <p class="heading"><?php echo 'Ainda não há registro de eventos Realizados aqui!'; ?></p>
-         <?php
-            }else {
-               foreach ($eventos as $val) {
-         ?>
-                  <div class="swiper-slide slide">
-                     <div class="image">
-                        <img src="./admin/assets/imagens/eventos/<?php echo $val['nomeImg']; ?>" alt="<?php echo $val['nomeEsp']; ?>">
-                     </div>
-                     <div class="content"><br>
-                        <h3><span><?php echo $val['nomeCli']; ?></span></h3><br>
-                        <h2>Tipo de Evento: <span><?php echo $val['tipoEve']; ?></span> Data do Evento: 
-                        <span><?php $data = new DateTime($val['dataEve']); echo $data->format('d/m/Y'); ?></span></h2>
-                        <div class="stars">
-                           <!--?php
-                              for ($i=0; $i < $comentario['estrelas']; $i++) {
-                           ?>      
-                                 <i class="fas fa-star"></i>
-                           <!?php
-                              } 
-                           ?-->
-                        </div>
-                        <center><a href="./eventos.php?id=<?php echo $val['idEve'] ?>" class="btn">ver fotos</a></center>
-                     </div>
-                  </div>
-         <?php	
-               }
-            }
-         ?>
-         </div>
-         <div class="swiper-pagination"></div>
-         <div class="swiper-button-next"></div>
-         <div class="swiper-button-prev"></div>
-
-      </div>
-   </section>
-         --}}
+   
    <!-- end -->
 
    <!-- servicos -->
-{{--
+
    <section class="servicos">
       <h1 class="heading"  data-tooltip="os nossos parceiros">parceiros</h1>
       <div class="swiper room-slider">
          <div class="swiper-wrapper">
-		<?php
-			if (empty($servicos)) {
-      ?>
-            <p class="heading"><?php echo 'Ainda não há registro de Serviços Realizados aqui!'; ?></p>
-      <?php
-         }else {
-			   foreach ($servicos as $value) {
-		?>
+		
+			@if (empty($servicos))
+      
+            <p class="heading">Ainda não há registro de Serviços Realizados aqui!</p>
+      @else
+			   @foreach ($servicos as $value) {
+		
                <div class="swiper-slide slide">
                   <div class="image">
                      <img src="./admin/assets/imagens/servicos/<?php echo $value['foto_capa']; ?>" alt="<?php echo $value['nomeFor']; ?>">
@@ -215,21 +156,13 @@
                      <p></span>Email: <span><?php echo $value['emailFor']; ?></span></p>
                      <p>Serviço: <span><?php echo $value['nomeServ']; ?></span></p>
                      <div class="stars">
-                        <!--?php
-                           for ($i=0; $i < $comentario['estrelas']; $i++) {
-                        ?>      
-                              <i class="fas fa-star"></i>
-                        <!?php
-                           } 
-                        ?-->
+
                      </div>
                      <center><a href="./parceiros.php?id=<?php echo $value['idServ']; ?>" class="btn">ver fotos</a></center>
                   </div>
                </div>
-		<?php	
-			   }
-         }
-		?>
+            @endforeach
+		@endif
 
          </div>
          <div class="swiper-pagination"></div>
@@ -239,7 +172,7 @@
       </div>
    </section>
    <!-- end -->
-   
+   {{--   
    <!-- perguntas -->
    <section class="perguntas" id="perguntas">
       <h1 class="heading"  data-tooltip="as perguntas mais frequentes">perguntas</h1>
@@ -317,7 +250,7 @@
 
                <div class="input-group">
                   <select name="nomeEs" id="nomeEs" class="input" hidden>
-                     <option value="<?php echo $salao['nomeEsp']; ?>"><?php echo $salao['nomeEsp']; ?></option>
+                     <option value="nomedoesp">nome dos espacos</option>
                   </select>
                </div>
                <center><button type="submit" value="COMENTAR" class="btn"><i class="fas fa-paper-plane"></i> COMENTAR</button></center>

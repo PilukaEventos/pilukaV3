@@ -84,10 +84,10 @@ var swiper = new Swiper(".gallery-slider", {
             slidesPerView: 1,
         },
         768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
         },
         991: {
-            slidesPerView: 4,
+            slidesPerView: 3,
         },
     },
 });
