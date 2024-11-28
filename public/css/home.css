@@ -302,7 +302,19 @@ header .navbar #switch-mode:checked + .switch-mode::before {
 .swiper-button-prev::after{
     font-size: 5rem;
 }
-
+/**************** mensagem de confirmação da reserva ****************/
+.Msgx{
+    width:100%;
+    background: rgba(255, 238, 0, 0.8);
+    height:35px;
+}
+.Msgx p{
+    text-transform: uppercase;
+    font-weight:600;
+    font-size: 15pt;
+    color:black;
+}
+/**************** end here ****************/
 /**************** disponibilidade ****************/
 .disponibilidade{
     margin-top: 7rem;

@@ -26,47 +26,48 @@
    <!--************ sobre ends here ***************-->
 
    <!-- reserva -->
+   <p>{{$dataForm}}</p>
    <section class="reserva" id="reserva">
 
       <h1 class="heading"  data-tooltip="Selecione um dos dias disponiveis para eventos">reserve agora</h1>
       <div>
-         <form method="POST" action="/reservar">
-
+         <form method="POST" action="/reservar" enctype="multipart/form-data">
+         @csrf
             <div class="container">
 
                <div class="box">
                   <p>Nome Completo<span>*</span></p>
-                  <input type="text" name="nomeCli" id="nomeCli" class="input" placeholder="O seu Nome Completo">
+                  <input type="text" name="nomeCli" id="nomeCli" class="input" placeholder="O seu Nome Completo" required>
                </div>
 
                <div class="box">
                   <p>Contacto <span>*</span></p>
-                  <input type="text" name="telefoneCli" id="telefoneCli" class="input" placeholder="O seu Contacto">
+                  <input type="text" name="telefoneCli" id="telefoneCli" class="input" placeholder="O seu Contacto" required>
                </div>
 
                <div class="box">
                   <p>Email <span>*</span></p>
-                  <input type="text" name="emailCli" id="emailCli" class="input" placeholder="O seu Email">
+                  <input type="email" name="emailCli" id="emailCli" class="input" placeholder="O seu Email" required>
                </div>
 
                <div class="box">
                   <p>data evento<span>*</span></p>
-                  <input type="date" name="dataEve" id="dataEve" class="input">
+                  <input type="date" name="dataEve" id="dataEve" class="input" required>
                </div>
 
                <div class="box">
                   <p>salão <span>*</span></p>
-                  <input type="text" name="dataEve" id="dataEve" class="input" disabled value="<?php echo $s['nomeEsp']; ?>">
+                  <input type="text" name="nomeEsp" id="dataEve" class="input" disabled value="{{$salao[0]->nomeEsp}}">
                </div>
 
                <div class="box">
                   <p>tipo evento <span>*</span></p>
-                  <input type="text" name="tipoEve" id="tipoEve" class="input" placeholder="O tipo de evento">
+                  <input type="text" name="tipoEve" id="tipoEve" class="input" placeholder="O tipo de evento" required>
                </div>
 
                <div class="box">
                   <p>nº convidados <span>*</span></p>
-                  <input type="number" name="numConv" id="numConv" class="input" placeholder="O nº de convidados">
+                  <input type="number" name="numConv" id="numConv" class="input" placeholder="O nº de convidados" required>
                </div>
 
                <div class="box">
@@ -76,7 +77,7 @@
                         Espaço
                      <input type="checkbox" name="servicos[]" value="catering">
                         Catering
-                     <input type="checkbox" name="servicos[]" value="decoracao">
+                     <input type="checkbox" name="servicos[]" value="decoracao" checked>
                         Decoração
                      <input type="checkbox" name="servicos[]" value="Outros">
                         Outros

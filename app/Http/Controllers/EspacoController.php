@@ -61,7 +61,7 @@ class EspacoController extends Controller
 
         return redirect('/espaco')->with('msg', 'São criado com sucesso!');
     }
-    /** sobre a informação dos espacos do botão sabermais na home */
+    /** sobre a informação dos espacos do botão sabermais na home por id */
     public function BuscarTodasInfoDoEspacoPorID(){
         $id=request('id');
 /*Logica para consulta filtradas apartir do ID*/

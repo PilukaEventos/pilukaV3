@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\EspacoController;
 
 use Illuminate\Http\Request;
 use App\Models\Espaco;
@@ -17,43 +18,58 @@ class HomeController extends Controller
         $planos = Plano::all();
         $fotos = Foto::all();
         
-        
-        
         /* Validação da disponibilidade */
         $dataForm=request('date');
         $nomeSalaoForm=request('nomeSalao');
+        
 
+        if (isset($dataForm) && isset($nomeSalaoForm)) {
 
-        if (isset($agendamentos) && isset($dataForm)) {
-            /*consulta no banco de dados retorna para variavel $busca */
-
-            $busca=Evento::where([
-                ['dataEvento','like','%'.$dataForm.'%']
-            ])->get();
 
             /*foreach para extair dodos da coluna dataEvento*/
 
-            foreach ($busca as $Dates) {
-                $dataBD=$Dates->dataEvento;
-                $SalaoBD=$Dates->nomeSalao;
-            }
+
+
             /*condição para verificar se dados que vêm da DB sao iguais aos que vieram do form*/
 
-            if (isset($dataBD)){
+            if ($agendamentos){
+            /*consulta no banco de dados retorna para variavel $busca */
 
-                    /*condição para verificar se a data do form e da BD são iguais*/
+            $buscaData=Evento::where([
+                ['dataEvento','like','%'.$dataForm.'%']])
+                ->join('espacos','eventos.idEsp','=','espacos.idEsp')
+                ->select('*')
+                ->distinct()
+                ->get();
 
-                    if ($dataBD==$dataForm && $SalaoBD==$nomeSalaoForm){
-                            return view('home',['espacos'=>$espacos],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'fotos'=>$fotos],['planos'=>$planos]); 
-                    }
-                    else {
+                if (!empty($buscaData[0])) {
+                    $dataBD=$buscaData[0]->dataEvento;
+                    $SalaoBD=$buscaData[0]->nomeEsp;
+                }
+                else{
+                    $dataBD=$espacos[0]->dataEvento;
+                    $SalaoBD=$agendamentos[0]->nomeEsp;
+                }   
+                /*condição para verificar se as datas do form e da BD são iguais*/
                     
-                        return view('home',['espacos'=>$espacos],['agendamentos'=>$agendamentos,'fotos'=>$fotos],['planos'=>$planos]);  
+                    if ($dataBD==$dataForm && $SalaoBD==$nomeSalaoForm){
+                            return view('home',['espacos'=>$espacos,'SalaoBD'=>$SalaoBD,'nomeSalaoForm'=>$nomeSalaoForm,'dataBD'=>$dataBD],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'dataForm'=>$dataForm,'fotos'=>$fotos],['planos'=>$planos]); 
+                    }
+                    
+                    else {
+                        $idEsp=Espaco::where([[
+                            'nomeEsp','=',$nomeSalaoForm
+                        ]])
+                        ->select('idEsp')
+                        ->get();
+                        $IDESP=$idEsp[0]->idEsp;
+                        
+                        return redirect('/salao'.'?'.'id='.$IDESP.'/#reserva')->with(['dataForm',$dataForm]);  
                     } 
             }
             else
                 {
-                    return view('home',['espacos'=>$espacos],['fotos'=>$fotos],['planos'=>$planos]);  
+                    return view('home',['espacos'=>$espacos],['fotos'=>$fotos],['buscaData'=>$buscaData,'planos'=>$planos]);  
                 }
             
 

@@ -47,6 +47,11 @@
 
     </section>
     <!-- end -->
+        @if(session('Msgx'))
+            <div class="Msgx">
+                <center><p>{{session('Msgx')}}</p></center>
+            </div>
+        @endif
     <!-- disponibilidade começa aqui -->
     <section class="disponibilidade" id="disponibilidade">
         <h1 class="heading"  data-tooltip="veja a disponibilidade da sua data desejada">disponibilidade</h1>
@@ -81,20 +86,23 @@
                             <label for="tipoEvento">tipo de Evento</label>
                         </div>
                     </div>
-                    @if(isset($agendamentos))
-                        @if(isset($dataBD))                                                    
-                                <p>A data escolhida: {{$dataBD}} , não está disponivel neste salão, por favor tente outra data ou salão.</p>
-                        @endif
-                    @else
-                    <p>nada para mostrar</p>
-                    @endif
+
                     <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i>RESERVAR</button></center>
                 </form>
             </div>
         </div>
+        
+                    @if(isset($dataBD))
+                        
+                            <p>A data escolhida: {{$dataBD}} , não está disponivel neste salão, por favor tente outra data ou salão.</p>
+                        <br>
+                            <p>{{$SalaoBD}}</p>
+                        
+                    @else
+                        <p>nada para mostrar por enquanto</p>
+                    @endif
     </section>
     <!-- disponibilidade termina aqui -->
-
 
     <!-- saloes -->
     <section class="salao" id="salao">
