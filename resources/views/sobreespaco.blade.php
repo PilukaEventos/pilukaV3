@@ -2,12 +2,20 @@
 @section('title','BEM VINDO A ESTE ESPACO')
 @section('content')
 
+
+
+
 @foreach($salao as $s)
    <!--************ sobre **************-->
    
+
    <section class="sobre" id="sobre">
       <h1 class="heading"  data-tooltip="um pouco sobre nós">Salão de Festas {{$s->nomeEsp}}</h1>
-
+@if(session('Msgx'))
+            
+            <script>alert(`{{session('Msgx')}}`)</script>
+            
+@endif
       <div class="row">
          <div class="image">
                
@@ -19,19 +27,38 @@
                 <p>Email: <span>{{$s->emailEsp}}</span> - Telefone: <span>{{$s->telefoneEsp}}</span></p>
                 <p>Redes Sociais: <span>{{$s->redes}}</span></p>
                 <p>Tipos de Eventos: <span>{{$s->descricaoEsp}}</span></p><br><br>
+                <hr/>
+                <p>Coordenadas do Banco: <Span>BFA 0055.0000.9239.4542.1 &nbsp;&nbsp; BAI 0006.0000.9239.4542.1</Span></p>
             </div>
+
       </div>
    </section>
 @endforeach   
    <!--************ sobre ends here ***************-->
+   <!--************ planos **************-->   
+   <section class="planos" id="planos">
+      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festa{{$salao[0]->nomeEsp}}</h1>
+
+      <div class="row">
+            <div class="content">
+               
+               <center>
+                  <p>Nº Convidados: <span>{{$planos[0]->numConv}}</span> - Preço: <span>{{$planos[0]->precoPla}}</span></p>
+               </center>
+               
+            </div>
+      </div>
+   </section>
+   
+   <!--************ planos ends here ***************-->
 
    <!-- reserva -->
-   <p>{{$dataForm}}</p>
+   
    <section class="reserva" id="reserva">
 
       <h1 class="heading"  data-tooltip="Selecione um dos dias disponiveis para eventos">reserve agora</h1>
       <div>
-         <form method="POST" action="/reservar" enctype="multipart/form-data">
+         <form method="GET" action="/reservar" enctype="multipart/form-data">
          @csrf
             <div class="container">
 
@@ -56,8 +83,8 @@
                </div>
 
                <div class="box">
-                  <p>salão <span>*</span></p>
-                  <input type="text" name="nomeEsp" id="dataEve" class="input" disabled value="{{$salao[0]->nomeEsp}}">
+                  <p>Espaco <span>*</span></p>
+                  <input type="text" name="nomeEsp" id="nomeEsp" class="input" disabled value="{{$salao[0]->nomeEsp}}" required>
                </div>
 
                <div class="box">
@@ -73,13 +100,15 @@
                <div class="box">
                   <p>Marque os serviços desejados <span>*</span></p>
                   <fieldset>
-                     <input type="checkbox" name="servicos[]" value="espaco" checked>
-                        Espaço
+                  <i class="fa-solid fa-music"></i><input type="checkbox" name="servicos[]" value="Musica" checked>
+                        Musica
                      <input type="checkbox" name="servicos[]" value="catering">
                         Catering
                      <input type="checkbox" name="servicos[]" value="decoracao" checked>
                         Decoração
-                     <input type="checkbox" name="servicos[]" value="Outros">
+                        <i class="fa-solid fa-glass-water"></i><input type="checkbox" name="servicos[]" value="Bebidas">
+                        Bebidas
+                        <input type="checkbox" name="servicos[]" value="Outros">
                         Outros
                   </fieldset>
                </div>
@@ -112,23 +141,8 @@
    </section>
    <!-- end -->
     
-   <!--************ planos **************-->
    
-   <section class="planos" id="planos">
-      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festa{{$salao[0]->nomeEsp}}</h1>
-
-      <div class="row">
-            <div class="content">
-               
-               <center>
-                  <p>Nº Convidados: <span>{{$planos[0]->numConv}}</span> - Preço: <span>{{$planos[0]->precoPla}}</span></p>
-               </center>
-               
-            </div>
-      </div>
-   </section>
    
-   <!--************ planos ends here ***************-->
 
    <!-- Eventos  -->
    

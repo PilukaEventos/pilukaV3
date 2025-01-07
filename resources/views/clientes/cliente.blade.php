@@ -14,7 +14,7 @@
 					</li>
 					<li><i class='bx bx-chevron-right' ></i></li>
 					<li>
-						<a class="active" href="#">Salões</a>
+						<a class="active" href="#">Utilizadores</a>
 					</li>
 				</ul>
 			</div>
@@ -27,7 +27,7 @@
         <!-- section table  -->
 		<div class="table-data">
 			<div class="order">
-                <h2 class="heading">Salões</h2>
+                <h2 class="heading">UTILIZADORES</h2>
 
                 <div class="container-fluid">
                     <div class="row">
@@ -41,41 +41,38 @@
                     <!--?php
                         if (isset($_SESSION['id_admin'])) {
                     ?-->
-                            <a href="/espaco/novo" class="btn">novo espaço</a>
+                            <a href="{{route('usuario_novo')}}" onclick="confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')" class="btn">novo cliente</a>
                     <!--?php
                         }
                     ?-->
-                        <a href="/espaco/create_plano" class="btn">novo plano</a>
+                        <a href="{{route('usuario_novo')}}" class="btn">novo utilizador</a>
                 </div>
 					<table>
                         <thead>
                             <tr>
+                                <td>id</td>
                                 <td>FOTO</td>
                                 <td>NOME</td>
-                                <td>TELEFONE</td>
                                 <td>EMAIL</td>
-                                <td>REDES</td>
-                                <td>CONVIDADOS</td>
-                                <td>PREÇO</td>
-                                <td>ACÇÕES</td>
+                                <td>PASSWORD</td>
+                                <td>NIVEL</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                @if (count($espacos) > 0)
-                                    @foreach($espacos as $v)
+                                @if (count($clientes) > 0)
+                                    @foreach($clientes as $Usr)
                                 
                                         <tr>
                                             <td>
-                                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
+                                                <img src="/img/paulo.png" alt="foto_de_capa">
                                             </td>
-                                            <td>{{$v->nomeSalao}}</td>
-                                            <td>{{$v->telefoneSalao}}</td>
-                                            <td>{{$v->emailSalao}}</td>
-                                            <td>{{$v->redesSalao}}</td>
-                                            <td>{{$v->numConv}}</td>
-                                            <td>{{$v->precoPla}}</td>
+                                            <td>{{$Usr->id}}</td>
+                                            <td>{{$Usr->name}}</td>
+                                            <td>{{$Usr->email}}</td>
+                                            <td>***************</td>
+                                            <td>{{$Usr->email}}</td>
                                             <td>
                                                  <a href="#" id='$id' onclick="visUsuario($id)">
                                                    <span class="icon">
@@ -87,7 +84,7 @@
                                                         //verificando se é o usuario
                                                 ?-->
                                                         |
-                                                        <a href="./editar_espaco.php?id=<!--?php echo $v['idEsp']; ?-->">
+                                                        <a href="#">
                                                             <span class="icon">
                                                                     <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
                                                             </span>
@@ -122,7 +119,7 @@
                                         </tr>
                                     @endforeach
                                 @else
-                                    <p>Ainda não há Salões Registrados!</p>
+                                    <p>Ainda Não Há Rtilizadores Registrados!</p>
                                 @endif
                             </tr>
                                 

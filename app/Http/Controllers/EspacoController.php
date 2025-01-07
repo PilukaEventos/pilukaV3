@@ -12,19 +12,38 @@ class EspacoController extends Controller
     public function index(){
         $espacos = Espaco::all();
         $planos = Plano::all();
-    
-        return view('espaco',['espacos'=>$espacos],['espacos'=>$planos]);
+        if (session('user_info')) {
+            return view('espaco',['espacos'=>$espacos],['espacos'=>$planos]);
+        }
+        else {
+            return redirect(route('home'));
+        }
+        
     }
 
     public function novo(){
-        return view('espacos.novo');
+        if (session('user_info')) {
+            return view('espacos.novo');
+        }
+        else {
+            return redirect(route('home'));
+        }
+        
     }
 
     public function create_plano(){
-        return view('espacos.create_plano');
+        if (session('user_info')) {
+            return view('espacos.create_plano');
+        }
+        else {
+            return redirect(route('entrar'));
+        }
+        
+        
     }
 
     public function store(Request $request){
+        
         $espaco = new Espaco;
         $saveFoto = new Foto;
         $espaco->nomeSalao = $request->nomeSalao;

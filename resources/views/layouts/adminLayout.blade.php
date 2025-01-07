@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="/css/admin.css">
     </head>
     <body>
-
+@if(session('user_info'))
         <!-- SIDEBAR -->
         <section id="sidebar">
             <a href="./.php" class="brand">
@@ -87,15 +87,24 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/sair" class="logout">
+                                <a href="{{route('logout')}}" onclick="return confirm('tem a certeza que deseja terminar sessão ?')" class="logout">
                                     <i class='bx bxs-door-open' ></i>
                                     <span class="text">Sair</span>
                                 </a>
                             </li>
                         </ul>
-                <!--?php 
-                    }elseif (isset($_SESSION['id_gerente'])) {
-                ?>
+    
+                    </section>                 
+                    @elseif (session('cliente_info')) 
+                     <!-- SIDEBAR -->
+        <section id="sidebar">
+            <a href="./.php" class="brand">
+                <img src="../img/dancing2.png" alt="logo do piluka">
+                <span class="text">PILUKA</span>
+            </a>
+                <!--?php
+                    if (isset($_SESSION['id_admin'])) {
+                ?-->
                         <ul class="side-menu top">
                             <li class="active">
                                 <a href="/">
@@ -106,19 +115,7 @@
                             <li>
                                 <a href="/agendar">
                                     <i class='bx bxs-calendar' ></i>
-                                    <span class="text">Agendados</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/servicos">
-                                    <i class='bx bxs-wrench' ></i>
-                                    <span class="text">Serviços</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/funcionarios">
-                                    <i class='bx bxs-user-detail' ></i>
-                                    <span class="text">Funcionarios</span>
+                                    <span class="text">Agendar</span>
                                 </a>
                             </li>
                             <li>
@@ -127,6 +124,7 @@
                                     <span class="text">Clientes</span>
                                 </a>
                             </li>
+
                             <li>
                                 <a href="/realizados">
                                     <i class='bx bxs-detail' ></i>
@@ -136,113 +134,20 @@
                         </ul>
                         <ul class="side-menu">
                             <li>
-                                <a href="../home">
+                                <a href="/home">
                                     <i class='bx bxs-home' ></i>
                                     <span class="text">Home</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/sair" class="logout">
+                                <a href="{{route('logout')}}" onclick="return confirm('tem a certeza que deseja terminar sessão ?')" class="logout">
                                     <i class='bx bxs-door-open' ></i>
                                     <span class="text">Sair</span>
                                 </a>
                             </li>
                         </ul>
-                <--?php 
-                    }elseif (isset($_SESSION['id_fun'])) {
-                ?>
-                        <ul class="side-menu top">
-                            <li class="active">
-                                <a href="./.php">
-                                    <i class='bx bxs-dashboard' ></i>
-                                    <span class="text">Inicio</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./agendar.php">
-                                    <i class='bx bxs-calendar' ></i>
-                                    <span class="text">Agendados</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./servicos.php">
-                                    <i class='bx bxs-wrench' ></i>
-                                    <span class="text">Serviços</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./clientes.php">
-                                    <i class='bx bxs-user' ></i>
-                                    <span class="text">Clientes</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./realizados.php">
-                                    <i class='bx bxs-detail' ></i>
-                                    <span class="text">Realizados</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="side-menu">
-                            <li>
-                                <a href="../.php">
-                                    <i class='bx bxs-home' ></i>
-                                    <span class="text">Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./sair.php" class="logout">
-                                    <i class='bx bxs-door-open' ></i>
-                                    <span class="text">Sair</span>
-                                </a>
-                            </li>
-                        </ul>
-                <--?php 
-                    }elseif (isset($_SESSION['id_forn'])) {
-                ?>
-                        <ul class="side-menu top">
-                            <li class="active">
-                                <a href="./.php">
-                                    <i class='bx bxs-dashboard' ></i>
-                                    <span class="text">Inicio</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./agendar.php">
-                                    <i class='bx bxs-calendar' ></i>
-                                    <span class="text">Agendados</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./clientes.php">
-                                    <i class='bx bxs-user' ></i>
-                                    <span class="text">Clientes</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./realizados.php">
-                                    <i class='bx bxs-detail' ></i>
-                                    <span class="text">Realizados</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="side-menu">
-                            <li>
-                                <a href="../.php">
-                                    <i class='bx bxs-home' ></i>
-                                    <span class="text">Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./sair.php" class="logout">
-                                    <i class='bx bxs-door-open' ></i>
-                                    <span class="text">Sair</span>
-                                </a>
-                            </li>
-                        </ul>
-                <--?php 
-                    }else {
-                ?>
+                    </section>                        
+                    @else 
                         <ul class="side-menu top">
                             <li class="active">
                                 <a href="/">
@@ -277,9 +182,7 @@
                                 </a>
                             </li>
                         </ul>
-                <--?php
-                    }  
-                ?-->
+                @endif
         </section>
         <!-- END OF SIDEBAR -->
 

@@ -35,7 +35,15 @@ body {
 	background: var(--grey);
 	overflow-x: hidden;
 }
-
+/*Se tiver sessao iniciada as informacoes do menu vão receber essa estilização
+foto
+nome de usuario
+tipo de user
+ */
+    .user_info_menu{
+        font-size: 12pt;
+        width: 30rem;
+    }
 *,
 *::before,
 *::after{
@@ -169,8 +177,8 @@ section{
 }
 
 .header .navbar .profile img {
-	width: 50px;
-	height: 50px;
+	width: 10rem;
+	height: 10vh;
 	object-fit: cover;
 	border-radius: 25%;
 	cursor: none;

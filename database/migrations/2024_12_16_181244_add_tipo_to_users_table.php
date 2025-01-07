@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('espacos', function (Blueprint $table) {
-            $table->string('foto');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->string('tipo',100);
         });
     }
 
@@ -25,8 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('espacos', function (Blueprint $table) {
-            $table->dropcolumn('foto');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->dropColumn('tipo',100);
         });
     }
 };

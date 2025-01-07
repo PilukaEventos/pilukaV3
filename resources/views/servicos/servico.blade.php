@@ -14,7 +14,7 @@
 					</li>
 					<li><i class='bx bx-chevron-right' ></i></li>
 					<li>
-						<a class="active" href="#">Salões</a>
+						<a class="active" href="#">Servicos</a>
 					</li>
 				</ul>
 			</div>
@@ -27,7 +27,7 @@
         <!-- section table  -->
 		<div class="table-data">
 			<div class="order">
-                <h2 class="heading">Salões</h2>
+                <h2 class="heading">Servicos</h2>
 
                 <div class="container-fluid">
                     <div class="row">
@@ -41,11 +41,12 @@
                     <!--?php
                         if (isset($_SESSION['id_admin'])) {
                     ?-->
-                            <a href="/espaco/novo" class="btn">novo espaço</a>
+                            <a href="/espaco/novo" class="btn">novo servico</a>
                     <!--?php
                         }
                     ?-->
                         <a href="/espaco/create_plano" class="btn">novo plano</a>
+                        <a href="/servicos/associar_me" class="btn">associar-me a um espaco</a>
                 </div>
 					<table>
                         <thead>

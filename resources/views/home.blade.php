@@ -90,17 +90,21 @@
                     <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i>RESERVAR</button></center>
                 </form>
             </div>
-        </div>
-        
+        </div>      
+         
                     @if(isset($dataBD))
-                        
-                            <p>A data escolhida: {{$dataBD}} , não está disponivel neste salão, por favor tente outra data ou salão.</p>
-                        <br>
-                            <p>{{$SalaoBD}}</p>
-                        
+                           <script>
+                                alert(' <p>A data escolhida: {{$dataBD}} , não está disponivel neste salão, por favor tente outra data ou salão.</p>');
+                           </script>
+                    
+                    @elseif(isset($Msgxs))
+                        <script>
+                            alert('{{$Msgxs}}');
+                        </script>   
                     @else
-                        <p>nada para mostrar por enquanto</p>
+                        
                     @endif
+                    
     </section>
     <!-- disponibilidade termina aqui -->
 
@@ -127,13 +131,10 @@
                                 <p>Contacto: <span>{{$v->telefoneEsp}}</span></p><br>
                                 <center><a href="/salao?id={{ $v->idEsp}}" class="btn">saiba mais</a></center>
                             </div>
-                            
                         </div>
-                    
 			        @endforeach
                 @endif
             </div>
-
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -143,43 +144,30 @@
 
     <!-- servicos -->
 
-    <section class="servicos">
+    <section class="servicos" id="servicos">
         <h1 class="heading"  data-tooltip="os nossos serviços">serviços</h1>
         <div class="swiper room-slider">
             <div class="swiper-wrapper">
-            <!--?php
-				    if (empty($servico)) {
-                echo 'Ainda não há serviços registrados aqui!';
-                }else {
-				    foreach ($servico as $value) {
-            ?-->
-
-                <div class="swiper-slide slide">
-                <div class="image">
-                    <img src="/admin/assets/imagens/servicos/<!--?php echo $value['foto_capa']; ?-->" alt="">
-                </div>
-                <div class="content"><br/>
-                    <h3><!--?php echo $value['nomeServ']; ?--></h3>
-                    <p>Sobre: <span><!--?php echo $value['descricaoServ']; ?--></span></p>
-                    <p>Fornecedor: <span><!--?php echo $value['nomeFor']; ?--></span></p><br>
-                    <div class="stars">
-                        <!--?php
-                            for ($i=0; $i < $comentario['estrelas']; $i++) {
-                        ?>      
-                            <i class="fas fa-star"></i>
-                        <!?php
-                            } 
-                        ?-->
-                    </div>
-                    <center><a href="/servico?id=<!--?php echo $value['idServ']; ?-->" class="btn">saiba mais</a></center>
-                </div>
-                </div>
-			    <!--?php
-				    }
-            }
-            ?-->
+                @if (empty($Servicos))
+                    <p>Ainda não há servicos registrados aqui!</p>
+                @else
+                    @foreach ($Servicos as $Serv)
+                    
+                        <div class="swiper-slide slide">
+                            
+                            <div class="image">
+                                    <img src="/img/teste/{{$v->fotoEsp}}" alt="{{$v->nomeEsp}}">
+                            </div>
+                            <div class="content"><br/>
+                                <h3>{{$Serv->nomeServ}}</h3>
+                                <p>Sobre: <span>{{$Serv->descricaoServ}}</span></p><br>
+                                <p>Contacto: <span>{{$Serv->telefoneServ}}</span></p><br>
+                                <center><a href="/servico?id={{ $Serv->idServ}}" class="btn">saiba mais</a></center>
+                            </div>
+                        </div>
+			        @endforeach
+                @endif
             </div>
-
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -192,45 +180,11 @@
     <section class="opniao" id="opniao">
          
 
-        <div class="swiper opniao-slider">
-            <div class="swiper-wrapper">
-			    <!--?php 
-                foreach ($espacos as $e)
-                foreach ($comentarios as $c) {
-			    ?-->
-                <div class="swiper-slide slide">
-                <div class="user">
-                    <img src="/admin/assets/imagens/comentarios/<!--?php echo $c['nomeImg']; ?-->" alt="">
-                    <div class="user-info">
-                        <h3><!--?php echo $c['nomeCom']; ?--></h3>
-                        <div class="icon">
-                            <a href="#"> <i class="fas fa-calender"></i>
-                            <!--?php $data = new DateTime($c['dia']); echo $data->format('d/m/Y'); echo " - "; ?--><!--?php echo $c['horario']; ?--></a>
-                        </div>
-                        <div class="stars">
-                            <!--?php
-                            for ($i=0; $i < $c['estrelas'] ; $i++) {
-                            ?>      
-                                <i class="fas fa-star"></i>
-                            <!?php
-                            } 
-                            ?-->
-                        </div>
-                    </div>
-                </div>
-                <i class="fas fa-quote-left"></i>
-                <p>O Salão <!--?= $e['nomeEsp']; ?--> é <!--?php echo $c['comentario']; ?--></p>
-                <i class="fas fa-quote-right"></i>
-                </div>
-                <!--?php        
-                    }
-                ?-->
 
-            </div>
             <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-        </div>
+        
 
     </section>
     <!-- end -->

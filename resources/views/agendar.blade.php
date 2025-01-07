@@ -26,6 +26,7 @@
             <!-- section table  -->
 			<div class="table-data">
 				<div class="order">
+                <a href="home" onclick="return confirm('Você será redirecionado para home na sessão de reserva do salão clica em OK para continuar')" class="btn">Novo Agendamento</a>
                     <h2 class="heading">Agendamentos</h2>
                     <table>
                             <thead>

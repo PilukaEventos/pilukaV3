@@ -27,6 +27,9 @@
 						<li>
 							<a class="active" href="#">Inicio</a>
 						</li>
+                        <li>
+							<a class="active" href="#">BEM VINDO @if(session('user_info')){{session('user_info')->name}}@endif</a>
+						</li>
 					</ul>
 				</div>
 				<a href="#" class="btn">
@@ -35,10 +38,10 @@
 				</a>
 			</div>
 
-
 			<ul class="box-info">
 				<a href="/agendar">
 					<li>
+                    {{--
 					<!--?php 
 						if (count($agen) > 0) {
 							// se tiver usuarios na bd
@@ -58,11 +61,47 @@
 					<-?php
 						}else{
 					?-->
+                        --}}
 							<i class='bx bxs-calendar' ></i>
 							<span class="text">
 								<center>
-									<h3>0</h3>
+									<h3>{{$eventosPendentes}}</h3>
 									<p>Agendados</p>
+								</center>
+							</span>
+					<!--?php
+						}   
+					?-->
+					</li>
+				</a>
+                <a href="/agendar">
+					<li>
+                   {{--     
+					<!--?php 
+						if (count($agen) > 0) {
+							// se tiver usuarios na bd
+					?>
+							<i class='bx bxs-calendar' ></i>
+							<span class="text">
+					<-?php
+							foreach ($agen as $a) {
+					?>
+								<center>
+									<h3><-?php echo $a['numAgen']; ?></h3>
+					<-?php		
+							}
+					?>
+									<p>Agendados</p>
+								</center>
+					<-?php
+						}else{
+					?-->
+                        --}}	
+                    <i class='bx bxs-calendar' ></i>
+							<span class="text">
+								<center>
+									<h3>{{$eventosPendentes}}</h3>
+									<p>Pendentes</p>
 								</center>
 							</span>
 					<!--?php
@@ -72,6 +111,7 @@
 				</a>
 				<a href="/realizados">
 					<li>
+                    {{--
 					<!--?php 
 						if (count($eventos) > 0) {
 							// se tiver usuarios na bd
@@ -91,6 +131,7 @@
 					<-?php
 						}else{
 					?-->
+                        --}}
 							<i class='bx bxs-detail' ></i>
 							<span class="text">
 								<center>
@@ -126,7 +167,7 @@
 							<i class='bx bxs-group' ></i>
 							<span class="text">
 								<center>
-									<h3>0</h3>
+									<h3>{{count($Usuarios)}}</h3>
 									<p>Funcionarios</p>
 								</center>
 							</span>
@@ -159,13 +200,46 @@
 								<i class='bx bxs-wrench' ></i>
 								<span class="text">
 									<center>
-										<h3>0</h3>
+										<h3>{{count($Servicos)}}</h3>
 										<p>Serviços</p>
 									</center>
 								</span>
 						<!--?php		
 							}
 						?-->
+					</li>
+				</a>
+                <a href="/comentarios">
+					<li>
+					<!--?php 
+						if (count($eventos) > 0) {
+							// se tiver usuarios na bd
+					?>
+							<i class='bx bxs-detail' ></i>
+							<span class="text">
+					<-?php
+							foreach ($eventos as $e) {
+					?>
+								<center>
+										<h3><-?php echo $e['numEve']; ?></h3>
+					<-?php		
+							}
+					?>
+									<p>Realizados</p>
+								</center>
+					<-?php
+						}else{
+					?-->
+							<i class='bx bxs-cool' ></i>
+							<span class="text">
+								<center>
+									<h3>{{count($comentarios)}}</h3>
+									<p>Comentarios</p>
+								</center>
+							</span>
+					<!--?php
+						}  
+					?-->
 					</li>
 				</a>
 			</ul>
@@ -1077,6 +1151,9 @@
                 }
             ?-->
                 </div>
+            </div>
+            <div>
+                
             </div>
     </main>
     <!-- MAIN -->

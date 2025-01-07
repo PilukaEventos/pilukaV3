@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,44 +55,42 @@
                     <hr/>
                 </ul>
             </nav>
-            <!-- End Sub Menu-->
-            <a href="./" class="logo"><img src="./img/dancing2.png"></a>
-            <a href="./">home</a>
-            <input type="checkbox" href="#" id="submenu">
-            <label for="submenu"><a>Categoria</a></label>
-            <!--a href="./servico">serviços</a>
-            <a href="./salao">salões</a-->
-            <a href="./sobre">sobre nós</a>
-               <!--?php 
-                  if (isset($informacoes)) {//tem uma sessão
-               ?->
-                    <a href="./admin/index">Admin</a>
-                    <div>
-                        <a href="#">
-                           <--?php
-                              echo $informacoes['nomeUsu'];
-                           ?->
-                        </a>
-                    </div>
-               <--?php		
-                  }else {
-               ?-->    
+                <!-- End Sub Menu-->
+                <a href="./" class="logo"><img src="./img/dancing2.png"></a>
+                <a href="./">home</a>
+                <input type="checkbox" href="#" id="submenu">
+                <label for="submenu"><a>Categoria</a></label>
+                <!--a href="./servico">serviços</a>
+                <a href="./salao">salões</a-->
+                <a href="./sobre">sobre nós</a>
+                {{--tem uma sessão--}}
+                @if(session('user_info'))
+                        <div class="user_info_menu profile">
+                    <ul class="dropbtn">
+                        
+                        <li class="dropdown">
+                        <img class="profile dropbtn" src="./img/paulo.png">
+                        
+                            <div class="dropdown-content">
+                            <a href="{{route('logout')}}">Sair</a>    
+                            <a href="{{route('admin')}}">Administrativo</a>
+                                
+                            </div>
+                        </li>
+                        <li >
+                        <p href="{{route('admin')}}" class="dropdown">{{session('user_info')->name}}</p>
+                        </li> 
+                    </ul>
+                </div>
+                @elseif(session('cliente_info'))
+                <a href="{{route('areadeclientes')}}">MEUS EVENTOS</a>                        
+                @else   
                 <div>
                     <a href="./entrar">ENTRAR</a>
-               <!--?php
-                  }
-               ?-->
+               
                 </div>
-            <!--?php 
-                  if (isset($informacoes)) {//tem uma sessão
-               ->
-                    <a href="#" class="profile">
-                        <img src="./admin/assets/imagens/usuarios/<--?php echo $informacoes['foto_capa']; ?->">
-                    </a>
-                    <a href="./admin/sair">SAIR</a>
-               <--?php
-                  }
-               ?-->
+              
+               @endif
                 <input type="checkbox" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label>
         </nav>
@@ -108,7 +108,12 @@
                      <li><a href=""> REGISTAR-SE </a></li>
                      <li><a href=""> SOBRE NOS</a></li>
                      <hr>
-                     <li><a href=""> ENTRAR</a></li>
+                     
+                        
+                     
+                        <li><a href="">ENTRAR</a></li>
+                     
+                     
                      <hr>
                   </ul>
                </nav>

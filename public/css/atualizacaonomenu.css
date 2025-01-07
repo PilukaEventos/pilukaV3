@@ -59,3 +59,90 @@ nav#categoria  ul li{
     border:none;
 }
 input[type="checkbox"]{display: none;}
+
+
+/* Este codigo sera utilizado se o usuario iniciar sessao e estiver na home
+*Imagem
+*Admin
+*Sair
+*/
+
+/* Navbar styling */
+.user_info_menu {
+    
+    background-color:transparent;
+    font-family:(--poppins);
+    
+}
+
+.user_info_menu ul {
+    list-style: none;
+    display: flex;
+    padding: 2rem;
+    
+}
+
+.user_info_menu li {
+    position: relative;
+    justify-content: left;
+    justify-items: left;
+    
+}
+
+.user_info_menu a {
+    color:var(--red);
+    padding: 2rem;
+    text-decoration: none;
+    display: block;
+    text-align:left;
+}
+.user_info_menu p{
+        font-size: 1.5rem;
+        color: var(--red);
+        padding: 1rem;
+        text-align: center;    
+}
+
+/* Change background color on hover */
+.navbar a:hover {
+    background-color:transparent;
+}
+
+
+/* Dropdown Container  */
+.dropdown {
+    position: relative;
+    width: 100%;
+    
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width:100%;
+    color:var(--red);
+    z-index: 1;
+    margin:auto auto 0 -10rem;
+    
+}
+
+.dropdown-content a {
+    font-size: 1.5rem;
+    color:var(--red);
+    padding: 3rem 1rem 1rem 0;
+    
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color:transparent;
+    color:var(--red);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display:block;
+    color: (--yellow);
+}
