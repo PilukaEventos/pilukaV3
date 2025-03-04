@@ -41,7 +41,7 @@
                     <!--?php
                         if (isset($_SESSION['id_admin'])) {
                     ?-->
-                            <a href="/espaco/novo" class="btn">novo servico</a>
+                            <a href="/servicos/novo" class="btn">novo servico</a>
                     <!--?php
                         }
                     ?-->
@@ -51,44 +51,39 @@
 					<table>
                         <thead>
                             <tr>
-                                <td>FOTO</td>
-                                <td>NOME</td>
+                                <td>FORNECEDOR</td>
                                 <td>TELEFONE</td>
+                                <td>ALTERNATIVO</td>
                                 <td>EMAIL</td>
-                                <td>REDES</td>
-                                <td>CONVIDADOS</td>
-                                <td>PREÇO</td>
+                                <td>DESCRICAO</td>
+                                <td>NIF</td>
                                 <td>ACÇÕES</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                @if (count($espacos) > 0)
-                                    @foreach($espacos as $v)
+                                @if (count($Servicos) > 0)
+                                    @foreach($Servicos as $sv)
                                 
                                         <tr>
                                             <td>
-                                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
+                                                {{$sv->nomeServ}}
                                             </td>
-                                            <td>{{$v->nomeSalao}}</td>
-                                            <td>{{$v->telefoneSalao}}</td>
-                                            <td>{{$v->emailSalao}}</td>
-                                            <td>{{$v->redesSalao}}</td>
-                                            <td>{{$v->numConv}}</td>
-                                            <td>{{$v->precoPla}}</td>
+                                            <td>{{$sv->telefoneServ}}</td>
+                                            <td>{{$sv->telefoneFor}}</td>
+                                            <td>{{$sv->emailFor}}</td>
+                                            <td>{{$sv->descricaoServ}}</td>
+                                            <td>{{$sv->nif}}</td>
                                             <td>
                                                  <a href="#" id='$id' onclick="visUsuario($id)">
                                                    <span class="icon">
                                                         <i class="bx bx-show-alt" style="color: #006400;"></i>
                                                     </span>
-                                                </a>
-                                               <!--?php
-                                                    if (isset($_SESSION['id_fun']) || isset($_SESSION['id_forn'])) {
-                                                        //verificando se é o usuario
-                                                ?-->
+                                                </a>                                               
+                                                    @if(session('fun_info') || session('user_info'))
                                                         |
-                                                        <a href="./editar_espaco.php?id=<!--?php echo $v['idEsp']; ?-->">
+                                                        <a href="/servicos_editar?id={{$sv->idServ}}">
                                                             <span class="icon">
                                                                     <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
                                                             </span>
@@ -100,6 +95,7 @@
                                                             </span>
                                                             <span class="title"></span>
                                                         </a>
+                                                    @endif
                                                 <!--?php
                                                     }elseif (isset($_SESSION['id_gerente']) || isset($_SESSION['id_admin'])) {
                                                 ?->

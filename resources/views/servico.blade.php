@@ -1,16 +1,4 @@
-<!--?php 
-   
-   
-   if (isset($_GET['id']) && !empty($_GET['id'])) {
-		$id = addslashes(htmlentities($_GET['id']));
-	}else {
-		header('location:./index.php');
-	}
-   $servico = $se->buscarDadosServicoPorID($id);
-   $saloes = $s->buscarDadosSalaoPorID($id);
-   $even = $ev->buscarDadosEventosRealizadosPorID($id);
-	$imagensDoServico = $se->buscarImagensPorId($id); 
-?-->
+
 @extends('layouts.homeLayout')
 @section('title','Prestadores de servicos')
 @section('content')
@@ -22,19 +10,41 @@
       <div class="row">
 
          <div class="image">
-            <img src="./img/teste/4f9352d8d926e0415c89ea3c52f18cbf.png" alt="{{$Servicos[0]->idServ}}">
+            <img src="./img/{{$Servicos[0]->fotoCapa}}" alt="{{$Servicos[0]->idServ}}">
          </div>
 
          <div class="content">
-            <p>Nome Forneçedores: <span>{{$Servicos[0]->nomeServ}}</span></p>
-            <p>Email: <span>{{$Servicos[0]->idFor}}</span> - Telefone: <span>{{$Servicos[0]->serv}}</span></p>
+            <p>Nome Forneçedores: <span>{{$Servicos[0]->nomeFor}}</span></p>
+            <p>Email: {{$Servicos[0]->emailFor}} <span></span> - Telefone: <span>{{$Servicos[0]->telefoneFor}}</span></p>
             <p>Tipos de Eventos: <span>{{$Servicos[0]->descricaoServ}}</span></p>
+            <hr/>
+                <p>Coordenadas do Banco: <Span>BFA 0055.0000.9239.4542.1 &nbsp;&nbsp; BAI 0006.0000.9239.4542.1</Span></p>
          </div>
 
       </div>
 
    </section>
    <!-- sobre ends here -->
+
+      <!--************ planos **************-->
+      <section class="planos" id="planos">
+      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Nossos Planos - {{$Servicos[0]->nomeServ}}</h1>
+
+      <div class="row">
+            <div class="content">
+               <!--?php
+                  foreach ($salao as $s) {
+               ?-->
+               <center>
+                  <p>Nº Convidados: <span><!--?php echo $s['numConv']; ?--></span> - Preço: <span><!--?php echo $s['precoPla']; ?--></span></p>
+               </center>
+               <!--?php	
+                  }
+               ?-->
+            </div>
+      </div>
+   </section>
+   <!--************ planos ends here ***************-->
 
    <!-- reserva -->
 
@@ -84,14 +94,15 @@
                <div class="box">
                   <p>Marque os serviços desejados <span>*</span></p>
                   <fieldset>
-                     <input type="checkbox" name="servicos[]" value="espaco" checked>
-                        Espaço
-                     <input type="checkbox" name="servicos[]" value="catering">
-                        Catering
-                     <input type="checkbox" name="servicos[]" value="decoracao" checked>
-                        Decoração
-                     <input type="checkbox" name="servicos[]" value="Outros">
-                        Outros
+                     <i class="fa-solid fa-music" onclick="servp1()" id="servp1"> Musica</i><input type="checkbox"  name="servicos[]" value="Musica" checked id="servcheck1">
+                        
+                     <i class="fa-solid fa-utensils" onclick="servp2()" id="servp2"> Buffet</i><input type="checkbox"  name="servicos[]" value="Buffet"  id="servcheck2">
+                        
+                        <i class="fa-solid fa-truck-fast" onclick="servp3()" id="servp3"> decoracao</i><input type="checkbox" name="servicos[]" value="decoracao" checked id="servcheck3">
+                        
+                        <i class="fa-solid fa-martini-glass" onclick="servp4()" id="servp4"> Bebidas</i><input type="checkbox" name="servicos[]" value="Bebidas" checked id="servcheck4" >
+                         <br>
+                        <i class="fa-solid fa-cart-plus" onclick="servp5()" id="servp5"> Outros</i><input type="checkbox" name="servicos[]" value="Outros" checked id="servcheck5" >
                   </fieldset>
                </div>
 
@@ -100,31 +111,11 @@
                   <input type="date" name="dataVi" id="dataVi" class="input">
                </div>
             </div>
-            <button value="RESERVAR" class="btn" ><i class="fas fa-paper-plane">CONFIRMAR RESERVAR</i></button>
+            <button value="RESERVAR" class="btn" disabled="disabled" ><i class="fas fa-paper-plane">CONFIRMAR RESERVAR</i></button>
          </form>
       </div>
    </section>
    <!-- end -->
-    
-   <!--************ planos **************-->
-   <section class="planos" id="planos">
-      <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festas {{$Servicos[0]->nomeServ}}</h1>
-
-      <div class="row">
-            <div class="content">
-               <!--?php
-                  foreach ($salao as $s) {
-               ?-->
-               <center>
-                  <p>Nº Convidados: <span><!--?php echo $s['numConv']; ?--></span> - Preço: <span><!--?php echo $s['precoPla']; ?--></span></p>
-               </center>
-               <!--?php	
-                  }
-               ?-->
-            </div>
-      </div>
-   </section>
-   <!--************ planos ends here ***************-->
 
    <!-- servicos -->
    <section class="servicos" id="servicos">

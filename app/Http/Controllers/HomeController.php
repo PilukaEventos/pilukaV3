@@ -11,10 +11,12 @@ use App\Http\Controllers\ServicoController;
 
 use App\Models\Comentario;
 use App\Models\Espaco;
+use App\Models\Fornecedore;
 use App\Models\Plano;
 use App\Models\Evento;
 use App\Models\Foto;
 use App\Models\Servico;
+use App\Models\Categoria;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,51 @@ class HomeController extends Controller
         $agendamentos=Evento::all();
         $planos = Plano::all();
         $fotos = Foto::all();
-        $Servicos=Servico::all();
-        $Comentarios=Comentario::all();
+        $categorias = Categoria::all();
+
+        $categoriaServicos=request('searchservico');
+        $CategoriaServico=request('categoriaServico');
+        if (isset($categoriaServicos)) {
+            if (Categoria::where('descricaoCat','like','%'.$categoriaServicos.'%')->exists()){
+                $searchservico=Categoria::where('descricaoCat','like','%'.$categoriaServicos.'%')->select('*')->distinct()->get();
+
+                /*Busca de dados nas tabelas servicos e fornecedores*/
+            $Servicos=Servico::where('idCat',$searchservico[0]->idCat)
+            ->join('fornecedores','fornecedores.idFor','=','servicos.idFor')
+            ->select('*')
+            ->distinct()
+            ->get();    
+            }    
+            else {
+                $searchservico="";
+
+            /*Busca de dados nas tabelas servicos e fornecedores*/
+                
+                $Servicos=Servico::join('fornecedores','fornecedores.idFor','=','servicos.idFor')
+                ->select('*')
+                ->distinct('nome')
+                ->get();
+                
+            }
+               
+        }
+        else {
+            $searchservico="";
+
+            /*Busca de dados nas tabelas servicos e fornecedores*/
+            $Servicos=Servico::query()
+                ->join('fornecedores','fornecedores.idFor','=','servicos.idFor')
+                ->select('*')
+                ->distinct()
+                ->get();                
+        }       
+
+        /*comentarios e tabelas relacionadas*/
+            $Comentarios=Comentario::join('espacos','comentarios.nomeEsp','=','espacos.nomeEsp')
+            ->join('fotos','comentarios.idCom','=','fotos.idCom')
+            ->select('*')
+            ->distinct()
+            ->get();
 
         /* Validação da disponibilidade */
         $dataForm=request('date');
@@ -50,7 +95,7 @@ class HomeController extends Controller
                 ->distinct()
                 ->get();
 
-                if (!empty($buscaData[0])) {
+                if (!empty($buscaData[0])){
                     $dataBD=$buscaData[0]->dataEvento;
                     $SalaoBD=$buscaData[0]->nomeEsp;
                 }
@@ -63,13 +108,13 @@ class HomeController extends Controller
                     $DataDoFormulario=strtotime($dataForm);
 
                     if ($dataBD==$dataForm && $SalaoBD==$nomeSalaoForm){
-                            return view('home',['espacos'=>$espacos,'SalaoBD'=>$SalaoBD,'nomeSalaoForm'=>$nomeSalaoForm,'dataBD'=>$dataBD],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'dataForm'=>$dataForm,'fotos'=>$fotos],['planos'=>$planos]); 
+                            return view('home',['espacos'=>$espacos,'categorias'=>$categorias,'searchservico'=>$searchservico,'SalaoBD'=>$SalaoBD,'nomeSalaoForm'=>$nomeSalaoForm,'dataBD'=>$dataBD],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'dataForm'=>$dataForm,'fotos'=>$fotos],['planos'=>$planos]); 
                     }
                     
                     else {
                         if(($DataDoFormulario)<=($DataDeHoje)+2600000){
                             $Msgxs="A Data escolhida já passou, ou está muito proxima a data actual segundo o nosso calendario. Tente pelo menos 30 dias de antecendência.";
-                            return view('home',['espacos'=>$espacos,'Msgxs'=>$Msgxs,'SalaoBD'=>$SalaoBD,'nomeSalaoForm'=>$nomeSalaoForm,'dataBD'=>$dataBD],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'dataForm'=>$dataForm,'fotos'=>$fotos],['planos'=>$planos]);
+                            return view('home',['espacos'=>$espacos,'categorias'=>$categorias,'searchservico'=>$searchservico,'Msgxs'=>$Msgxs,'SalaoBD'=>$SalaoBD,'nomeSalaoForm'=>$nomeSalaoForm,'dataBD'=>$dataBD],['agendamentos'=>$agendamentos,'dataBD'=>$dataBD,'dataForm'=>$dataForm,'fotos'=>$fotos],['planos'=>$planos]);
                         }else{
                             $idEsp=Espaco::where([[
                                 'nomeEsp','=',$nomeSalaoForm
@@ -85,7 +130,7 @@ class HomeController extends Controller
             else
                 {
 
-                    return view('home',['espacos'=>$espacos,'Servicos'=>$Servicos],['fotos'=>$fotos],['buscaData'=>$buscaData,'planos'=>$planos]);  
+                    return view('home',['espacos'=>$espacos,'categorias'=>$categorias,'searchservico'=>$searchservico,'Servicos'=>$Servicos],['fotos'=>$fotos],['buscaData'=>$buscaData,'planos'=>$planos]);  
                 }
             
 
@@ -93,10 +138,12 @@ class HomeController extends Controller
         else
                 {
 
-                    return view('home',['Servicos'=>$Servicos,'Comentarios'=>$Comentarios,'espacos'=>$espacos],['agendamentos'=>$agendamentos,'fotos'=>$fotos],['planos'=>$planos]);  
+                    return view('home',['Servicos'=>$Servicos,'categorias'=>$categorias,'Comentarios'=>$Comentarios,'searchservico'=>$searchservico,'espacos'=>$espacos],['agendamentos'=>$agendamentos,'fotos'=>$fotos],['planos'=>$planos]);  
                 }            
         /* Validação da disponibilidade termina aqui */        
     }
+
+    /* rota para a pagina sobre */        
     public function sobre(){
         $espacos = Espaco::all();
         $agendamentos=Evento::all();
@@ -108,9 +155,17 @@ class HomeController extends Controller
         
     public function entrar(){
         return view('layouts/entrar');
-    }     
+    } 
+    public function mensagem(){
+        $espacos = Espaco::all();
+        $agendamentos=Evento::all();
+        $planos = Plano::all();
+        $fotos = Foto::all();
         
-    
+
+        return view('clientes/mensagem');
+    }        
+        
     
 }
 

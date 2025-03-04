@@ -24,8 +24,8 @@
                 <img src="./img/paulo.png" alt="Paulo">
                 <div class="card_body">
                     <h6 class="card_title">Paulo Epalanga</h6>
-                    <a class="card_text"><i class="fas fa-envelope "></i> mrx@piluka.com  - <i class="fas fa-phone "> </i> +244 929 080 952</a>
-                    <center><p class="card_text">Backend</p></center>
+                    <center><a class="card_text"><i class="fas fa-envelope "></i> mrx@piluka.com</center>   <br> <center><i class="fas fa-phone "> </i> +244 929 080 952</a></center>
+                    <center><p class="card_text">Fullstack</p></center>
                 </div>
             </div>
 
@@ -33,8 +33,8 @@
                 <img src="./img/sofia.png" alt="Sofia">
                 <div class="card_body">
                     <h6 class="card_title">Sófia Luis</h6>
-                    <a class="card_text"><i class="fas fa-envelope "></i> sof@piluka.com  - <i class="fas fa-phone "></i> +244 940 933 114</a>
-                    <center><p class="card_text">Frontend</p></center>
+                    <center><a class="card_text"><i class="fas fa-envelope "></i> sof@piluka.com</center>  <br><center> <i class="fas fa-phone "></i> +244 940 933 114</a></center>
+                    <center><p class="card_text">Tecnica</p></center>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@
                 <img src="./img/Sérgio1.png" alt="Sérgio">
                 <div class="card_body">
                     <h6 class="card_title">Sérgio dos Santos Reis</h6>
-                    <a class="card_text"><i class="fas fa-envelope "> </i> ser@piluka.com  - <i class="fas fa-phone "></i> +244 921 528 794</a>
+                    <center><a class="card_text"><i class="fas fa-envelope "> </i> ser@piluka.com</center> <br> <center><i class="fas fa-phone "></i> +244 921 528 794</a></center>
                     <center><p class="card_text">Fullstack.</p></center>
                 </div>
             </div>
@@ -89,25 +89,26 @@
 
         <div class="row">
             <div class="hero">
-                <form method="POST">
+                <form method="POST" action="{{route('sent_email')}}" enctype="multipart-form-data">
+                @csrf
                         <div class="input-group">
-                            <input type="text" id="nome" required>
+                            <input type="text" name="nomecompleto" id="nomecompletomsg" required>
                             <label for="nome"><i class="fas fa-user"></i> Nome</label>
                         </div>
                     <div class="rows">
                         <div class="input-group">
-                            <input type="text" id="numero" required>
+                            <input type="text" name="telefonemsg" id="numeromsg" required>
                             <label for="numero"><i class="fas fa-phone"></i> Contacto</label>
                         </div>
                     
                         <div class="input-group">
-                            <input type="text" id="email" required>
+                            <input type="text" name="emailmsg" id="emailmsg" required>
                             <label for="email"><i class="fas fa-envelope"></i> Email</label>
                         </div>
                     </div>
                      <div class="input-group">
-                        <textarea id="messagem" rows="7" required></textarea>
-                        <label for="messagem"><i class="fas fa-comments"></i> A sua opinião</label>
+                        <textarea id="mensagem" name="mensagem" rows="7" required></textarea>
+                        <label for="mensagem"><i class="fas fa-comments"></i> A sua opinião</label>
                     </div>
                     <center><button type="submit" class="btn"><i class="fas fa-paper-plane"></i> SUBMIT</button></center>
                 </form>

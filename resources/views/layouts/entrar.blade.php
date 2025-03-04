@@ -2,6 +2,9 @@
 @section('title', 'Sistema de Gestão de Salões de Eventos e Serviços - PILUKA')
 @section('content')
 
+@if(session()->has('Msgx'))
+    <script>alert(`{{session('Msgx')}}`)</script>
+@endif
 <!-- ================ novo registro ================= -->
         <section class="entrar" id="entrar">
 	        <h2 class="heading">PILUKA</h2>

@@ -95,8 +95,7 @@ li {
 
 /************ Mensagens **********/
 .msg{
-	background-color:var(--dark);
-	color: #155724;
+	background-color:var(--yellow);
 	border: 1px solid #c3e6cb;
 	width: 100%;
 	margin-bottom: 0;
@@ -597,15 +596,18 @@ html #content main::-webkit-scrollbar-thumb{
 }
 
 #content main .table-data .order table th {
-	padding-bottom: 12px;
-	font-size: 20px;
+	padding-bottom: 12pt;
+	font-size: 18pt;
 	border-bottom: 1px solid var(--grey);
 }
 
 #content main .table-data .order table td {
 	padding: 10px 0;
-    font-weight: 600;
+    font-weight: 400;
     background-color: var(--tercearia);
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
 
 #content main .table-data .order table tr{
@@ -655,11 +657,11 @@ html #content main::-webkit-scrollbar-thumb{
 }
 
 #content main .table-data .order table tr td .status {
-	font-size: 10px;
+	font-size: 8pt;
 	padding: 6px 16px;
 	color: var(--dark);
 	border-radius: 20px;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 #content main .table-data .order table tr td .status.completed {
@@ -718,7 +720,7 @@ html #content main::-webkit-scrollbar-thumb{
 	outline: none;
     background: var(--light);
     box-shadow: var(--box-shadow);
-    font-size: 15px;
+    font-size: 8pt;
 }
 
 .novoReg .row .hero form textarea{
@@ -939,4 +941,124 @@ html #content main::-webkit-scrollbar-thumb{
 	#content main .table-data .todo .todo-list {
 		min-width: 420px;
 	}
+}
+
+/*********custom light Gallery setting**/
+
+
+/* Container for the gallery */
+#lightgallery {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between; /* Space out items evenly */
+    gap: 20px; /* Space between images */
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* Thumbnail images container */
+#lightgallery a {
+    position: relative;
+    width: calc(33.33% - 13.33px); /* Three images per row, accounting for gaps */
+    margin-bottom: 20px; /* Space between rows */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Hover effect on images */
+#lightgallery a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Thumbnail image styling */
+#lightgallery a img {
+    width: 15rem;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on image inside the link */
+#lightgallery a:hover img {
+    transform: scale(1.1);
+}
+
+/* Optional overlay text */
+#lightgallery a::after {
+    content: 'zoom';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#lightgallery a:hover::after {
+    opacity: 1;
+}
+
+/* Lightbox styling for overlay */
+.lg-outer {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Close button customization */
+.lg-close {
+    font-size: 40px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lg-close:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Arrow button styling */
+.lg-prev, .lg-next {
+    font-size: 30px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lg-prev:hover, .lg-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* BOTAO ATUALIZAR FOTO DE PERFIL DO CLIENTE */
+#actualperfil{display:none;}
+
+
+/* Make gallery fully responsive */
+@media (max-width: 1024px) {
+    #lightgallery a {
+        width: calc(50% - 10px); /* Two images per row for medium screens */
+		
+    }
+}
+
+@media (max-width: 768px) {
+    #lightgallery a {
+        width: 100%; /* Single column on small screens */
+    }
+    #lightgallery {
+        gap: 15px;
+    }
 }

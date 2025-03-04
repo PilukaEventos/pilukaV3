@@ -2,7 +2,9 @@
 @section('title','BEM VINDO A ESTE ESPACO')
 @section('content')
 
-
+@if(session('Msgx'))
+   {{session('Msgx')}}
+@endif
 
 
 @foreach($salao as $s)
@@ -19,15 +21,14 @@
       <div class="row">
          <div class="image">
                
-               <img src="./img/teste/{{$s->fotoEsp}}">
+               <img src="./img/{{$s->fotoEsp}}">
             
          </div>
             <div class="content">
                 <p>Localização: <span>{{$s->moradaEsp}}</span></p>
                 <p>Email: <span>{{$s->emailEsp}}</span> - Telefone: <span>{{$s->telefoneEsp}}</span></p>
                 <p>Redes Sociais: <span>{{$s->redes}}</span></p>
-                <p>Tipos de Eventos: <span>{{$s->descricaoEsp}}</span></p><br><br>
-                <hr/>
+                <p>Tipos de Eventos: <span>{{$s->descricaoEsp}}</span></p>
                 <p>Coordenadas do Banco: <Span>BFA 0055.0000.9239.4542.1 &nbsp;&nbsp; BAI 0006.0000.9239.4542.1</Span></p>
             </div>
 
@@ -38,14 +39,15 @@
    <!--************ planos **************-->   
    <section class="planos" id="planos">
       <h1 class="heading"  data-tooltip="um pouco sobre os nossos planos">Planos do Salão de Festa{{$salao[0]->nomeEsp}}</h1>
-
       <div class="row">
             <div class="content">
-               
-               <center>
-                  <p>Nº Convidados: <span>{{$planos[0]->numConv}}</span> - Preço: <span>{{$planos[0]->precoPla}}</span></p>
-               </center>
-               
+
+                  @foreach($planos as $plano)
+                  <p>Nº Convidados: <span>{{$plano->numConv}}</span> - Estimativa: <span>{{$plano->precoPla}}</span></p>
+                  @endforeach
+                  <hr>
+                  <center><h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero sapiente, quod earum incidunt mollitia sequi nulla tempora commodi? Nemo perferendis veniam ratione tempora suscipit blanditiis iusto enim provident culpa ducimus.</h4></center>
+                  <br>
             </div>
       </div>
    </section>
@@ -84,7 +86,7 @@
 
                <div class="box">
                   <p>Espaco <span>*</span></p>
-                  <input type="text" name="nomeEsp" id="nomeEsp" class="input" disabled value="{{$salao[0]->nomeEsp}}" required>
+                  <input type="text" name="nomedoespaco" id="nomeEsp" class="input" value="{{$salao[0]->nomeEsp}}" required>
                </div>
 
                <div class="box">
@@ -100,16 +102,15 @@
                <div class="box">
                   <p>Marque os serviços desejados <span>*</span></p>
                   <fieldset>
-                  <i class="fa-solid fa-music"></i><input type="checkbox" name="servicos[]" value="Musica" checked>
-                        Musica
-                     <input type="checkbox" name="servicos[]" value="catering">
-                        Catering
-                     <input type="checkbox" name="servicos[]" value="decoracao" checked>
-                        Decoração
-                        <i class="fa-solid fa-glass-water"></i><input type="checkbox" name="servicos[]" value="Bebidas">
-                        Bebidas
-                        <input type="checkbox" name="servicos[]" value="Outros">
-                        Outros
+                     <i class="fa-solid fa-music" onclick="servp1()" id="servp1"> Musica</i><input type="checkbox"  name="servicos[]" value="Musica" checked id="servcheck1">
+                        
+                     <i class="fa-solid fa-utensils" onclick="servp2()" id="servp2"> Buffet</i><input type="checkbox"  name="servicos[]" value="Buffet" checked  id="servcheck2">
+                        
+                        <i class="fa-solid fa-truck-fast" onclick="servp3()" id="servp3"> decoracao</i><input type="checkbox" name="servicos[]" value="decoracao" checked id="servcheck3">
+                        
+                        <i class="fa-solid fa-martini-glass" onclick="servp4()" id="servp4"> Bebidas</i><input type="checkbox" name="servicos[]" value="Bebidas" checked id="servcheck4" >
+                         <br>
+                        <i class="fa-solid fa-cart-plus" onclick="servp5()" id="servp5"> Outros</i><input type="checkbox" name="servicos[]" value="Outros" checked id="servcheck5" >
                   </fieldset>
                </div>
 
@@ -130,8 +131,8 @@
          <div class="gallery-container">
    
             @for($i=0; $i < 3; $i++)
-               <a href="/" class="box">   
-                  <img src="/img/teste/{{$fotos[$i]->nomeImg}}" alt="">
+               <a href="/img/{{$fotos[$i]->nomeImg}}" class="box">   
+                  <img src="/img/{{$fotos[$i]->nomeImg}}" alt="">
                   <div class="icon"> <i class="fas fa-plus"></i></div>
                </a>  
             @endfor
@@ -141,51 +142,43 @@
    </section>
    <!-- end -->
     
-   
-   
 
-   <!-- Eventos  -->
+   <!-- Eventos Realizados -->
    
    <!-- end -->
 
    <!-- servicos -->
 
    <section class="servicos">
-      <h1 class="heading"  data-tooltip="os nossos parceiros">parceiros</h1>
-      <div class="swiper room-slider">
-         <div class="swiper-wrapper">
-		
-			@if (empty($servicos))
-      
-            <p class="heading">Ainda não há registro de Serviços Realizados aqui!</p>
-      @else
-			   @foreach ($servicos as $value)
-		
-               <div class="swiper-slide slide">
-                  <div class="image">
-                     <img src="./admin/assets/imagens/servicos/<?php echo $value['foto_capa']; ?>" alt="<?php echo $value['nomeFor']; ?>">
-                  </div>
-                  <div class="content">
-                     <h3><?php echo $value['nomeFor']; ?></h3>
-                     <p>telefone: <span><?php echo $value['telefoneFor']; ?></p>
-                     <p></span>Email: <span><?php echo $value['emailFor']; ?></span></p>
-                     <p>Serviço: <span><?php echo $value['nomeServ']; ?></span></p>
-                     <div class="stars">
-
-                     </div>
-                     <center><a href="./parceiros.php?id=<?php echo $value['idServ']; ?>" class="btn">ver fotos</a></center>
-                  </div>
-               </div>
-            @endforeach
-		@endif
-
-         </div>
-         <div class="swiper-pagination"></div>
-         <div class="swiper-button-next"></div>
-         <div class="swiper-button-prev"></div>
-
-      </div>
-   </section>
+         <h1 class="heading"  data-tooltip="os nossos serviços">Nossos Parceiros</h1>
+        <div class="swiper room-slider">
+            <div class="swiper-wrapper">
+                @if (empty($servicos))
+                    <p>Ainda não há servicos registrados aqui!</p>
+                @else
+                    @foreach ($servicos as $Serv)
+                    
+                        <div class="swiper-slide slide">
+                            
+                            <div class="image">
+                                    <img src="/img/{{$Serv->fotoCapa}}" alt="{{$Serv->nomeServ}}">
+                            </div>
+                            <div class="content"><br/>
+                                <h3><span>{{$Serv->nomeServ}}</span></h3>
+                                <p>Contacto: <span>{{$Serv->telefoneFor}}</span></p>
+                                <p>Sobre: <span>{{$Serv->descricaoServ}}</span></p><br>
+                                <center><a href="/servico?id={{ $Serv->idServ}}" class="btn">saiba mais</a></center>
+                            </div>
+                        </div>
+			        @endforeach
+                @endif
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        
+    </section>
    <!-- end -->
    
    <!-- perguntas -->
@@ -220,8 +213,8 @@
             </div>
 
             <div class="box">
-               <h3>5.	No valor do espaço inclui serviços como limpeza e protocolo? </h3>
-               <p>sim</p>
+               <h3>5.	Quais são as formas de pagamento disponiveis? </h3>
+               <p>Multicaixa Express, Transferencia Por Iban, TPA, Depositos Bancarios</p>
             </div>
 
          </div>
@@ -248,7 +241,7 @@
 
                <div class="input-group">
                   <input type="text" name="nomeCom" required>
-                  <label for="nomeCom"><i class="fas fa-user"></i> Nome</label>
+                  <label for="nomeCom"><i class="fas fa-user"></i> Nome Completo</label>
                </div>
                     
                <div class="input-group">

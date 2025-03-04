@@ -38,14 +38,11 @@
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <!--?php
-                        if (isset($_SESSION['id_admin'])) {
-                    ?-->
-                            <a href="{{route('usuario_novo')}}" onclick="confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')" class="btn">novo cliente</a>
-                    <!--?php
-                        }
-                    ?-->
-                        <a href="{{route('usuario_novo')}}" class="btn">NOVO FUNCIONARIO</a>
+                        @if (session('user_info')->tipo='Admin' || session('user_info')->tipo='Gerente')
+                        <a href="/salao?id={{ session('fun_info')->idEsp}}#reserva" onclick="return confirm('Você será redirecionado para home na sessão de reserva do salão clica em OK para continuar')" class="btn">Novo cliente</a>
+                        
+                            <a href="{{route('funcionario_novo')}}" class="btn">NOVO FUNCIONARIO</a>
+                        @endif
                 </div>
 					<table>
                         <thead>
@@ -68,7 +65,7 @@
            
                                         <tr>
                                             <td>
-                                                <img src="/img/paulo.png" alt="foto_de_capa">
+                                                <img src="/img/perfil.png" alt="foto_de_capa">
                                             </td>
                                             <td>{{$F->idFun}}</td>
                                             <td><center>{{$F->nomeFun}}</center></td>
@@ -84,12 +81,11 @@
                                                         <i class="bx bx-show-alt" style="color: #006400;"></i>
                                                     </span>
                                                 </a>
-                                               <!--?php
-                                                    if (isset($_SESSION['id_fun']) || isset($_SESSION['id_forn'])) {
-                                                        //verificando se é o usuario
-                                                ?-->
-                                                        |
-                                                        <a href="#">
+                                               
+                                                    @if (session('user_info')[0]->tipo=='Admin' || session('user_info')[0]->tipo=='Gerente') 
+                                                        {{--verificando se é o usuario--}}
+                                               
+                                                        <a href="/funcionario_editar?editar={{$F->idFun}}">
                                                             <span class="icon">
                                                                     <i class="bx bxs-edit-alt" onclick="return confirm('Tem a certeza que deseja alterar estes dados ? em caso de duvida cosulta um administrador')" style="color: #00FFFF;"></i>
                                                             </span>
@@ -101,25 +97,7 @@
                                                             </span>
                                                             <span class="title"></span>
                                                         </a>
-                                                <!--?php
-                                                    }elseif (isset($_SESSION['id_gerente']) || isset($_SESSION['id_admin'])) {
-                                                ?->
-                                                        |
-                                                        <a href="./editar_espaco.php?id=<--?php echo $v['idEsp']; ?->">
-                                                            <span class="icon">
-                                                                <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
-                                                            </span>
-                                                        </a>
-                                                        |
-                                                        <a href="#">
-                                                            <span class="icon">
-                                                                <i class="bx bxs-trash-alt" style="color: #8B0000;"></i>
-                                                            </span>
-                                                            <span class="title"></span>
-                                                        </a>
-                                                <--?php
-                                                        }  
-                                                ?-->     
+                                                    @endif
                                             </td>
                                         </tr>
                                     @endforeach

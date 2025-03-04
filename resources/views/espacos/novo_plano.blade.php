@@ -63,12 +63,7 @@
                             </div>
                             <center>
                                 <div>
-                                    <button class="btn">
-                                        <a href="/espaco">
-                                            <i class="fas fa-paper-plane"></i> 
-                                            VOLTAR
-                                        </a>
-                                    </button>
+                                    <button class="btn"><i class="fas fa-paper-plane"></i>VOLTAR</button>
                                     <button value="REGISTRAR" class="btn" ><i class="fas fa-paper-plane">REGISTRAR</i></button>
                                 </div>
                             </center>

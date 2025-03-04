@@ -146,3 +146,64 @@ input[type="checkbox"]{display: none;}
     display:block;
     color: (--yellow);
 }
+
+/************* search button ****************/
+
+.search-container {
+    font-family: var(--montserrat);
+    display: flex;
+    align-items: center;
+    float:right;
+    right: 8rem;
+  }
+  
+  .search-btn {
+    font-family: var(--montserrat);
+    padding: .8rem;
+    width: 4rem;
+    font-size: 14pt;
+    background-color: var(--red);
+    color:var(--yellow);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius:0 1.2rem 1.2rem 0;
+    
+  }
+  
+  .search-btn:hover {
+    background-color: var(--red);
+    color:var(--red);
+  }
+  
+  .search-box {
+    font-family: var(--montserrat);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    width: 0;
+    height: 40px;
+    margin-right: -5rem;
+    float: right;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .search-box input {
+    font-family: var(--montserrat);
+    padding: 10px;
+    width: 30rem;
+    font-size: 14px;
+    border-radius: 2.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-left: -2rem;
+  }
+  
+  .search-box.active {
+    font-family: var(--montserrat);
+    width: 300px;
+    opacity: 1;
+  }
+
+  
+ /************* Light Gallery custom css*************/

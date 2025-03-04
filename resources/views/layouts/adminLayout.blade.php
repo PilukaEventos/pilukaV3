@@ -20,15 +20,16 @@
     </head>
     <body>
 @if(session('user_info'))
+    @if(session('user_info')[0]->tipo=="Admin")
         <!-- SIDEBAR -->
         <section id="sidebar">
-            <a href="./.php" class="brand">
+            <a href="./admin" class="brand">
                 <img src="../img/dancing2.png" alt="logo do piluka">
                 <span class="text">PILUKA</span>
             </a>
-                <!--?php
-                    if (isset($_SESSION['id_admin'])) {
-                ?-->
+                
+                     
+            
                         <ul class="side-menu top">
                             <li class="active">
                                 <a href="/">
@@ -78,7 +79,105 @@
                                     <span class="text">Realizados</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/galerias">                                    
+                                <i class='bx bx-images' ></i>
+                                    <span class="text">&nbsp;Galeria</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/home">
+                                <i class="bx bxs-chart"></i>
+                                    <span class="text">&nbsp;Negocio</span>
+                                </a>
+                            </li>
                         </ul>
+                        <ul class="side-menu">
+                            <li>
+                                <a href="/home">
+                                    <i class='bx bxs-home' ></i>
+                                    <span class="text">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('logout')}}" onclick="return confirm('tem a certeza que deseja terminar sessão ?')" class="logout">
+                                    <i class='bx bxs-door-open' ></i>
+                                    <span class="text">Sair</span>
+                                </a>
+                            </li>
+                        </ul>
+    
+                    </section>          
+                    @else
+
+                    
+        <!-- SIDEBAR -->
+        <section id="sidebar">
+            <a href="./admin" class="brand">
+                <img src="../img/dancing2.png" alt="logo do piluka">
+                <span class="text">PILUKA</span>
+            </a>
+                
+                     
+            
+                        <ul class="side-menu top">
+                            <li class="active">
+                                <a href="/">
+                                    <i class='bx bxs-dashboard' ></i>
+                                    <span class="text">Inicio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/agendar">
+                                    <i class='bx bxs-calendar' ></i>
+                                    <span class="text">Agendar</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/servicos">
+                                    <i class='bx bxs-wrench' ></i>
+                                    <span class="text">Serviços</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/espaco">
+                                    <i class='bx bxs-institution' ></i>
+                                    <span class="text">Salões</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/clientes">
+                                    <i class='bx bxs-user' ></i>
+                                    <span class="text">Clientes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/funcionarios">
+                                    <i class='bx bxs-user-detail' ></i>
+                                    <span class="text">Funcionarios</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/usuarios">
+                                    <i class='bx bxs-user' ></i>
+                                    <span class="text">Usuarios</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/realizados">
+                                    <i class='bx bxs-detail' ></i>
+                                    <span class="text">Realizados</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/galerias">                                    
+                                <i class='bx bx-images' ></i>
+                                    <span class="text">&nbsp;Galeria</span>
+                                </a>
+                            </li>
+                            
+                            </ul>
                         <ul class="side-menu">
                             <li>
                                 <a href="/home">
@@ -94,34 +193,33 @@
                             </li>
                         </ul>
     
-                    </section>                 
+                    </section>
+                    @endif
                     @elseif (session('cliente_info')) 
                      <!-- SIDEBAR -->
         <section id="sidebar">
-            <a href="./.php" class="brand">
+            <a href="/" class="brand">
                 <img src="../img/dancing2.png" alt="logo do piluka">
                 <span class="text">PILUKA</span>
             </a>
-                <!--?php
-                    if (isset($_SESSION['id_admin'])) {
-                ?-->
+              
                         <ul class="side-menu top">
                             <li class="active">
-                                <a href="/">
+                                <a href="{{route('areadeclientes')}}">
                                     <i class='bx bxs-dashboard' ></i>
                                     <span class="text">Inicio</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/agendar">
+                                <a href="/areadeclientes#confirmados">
                                     <i class='bx bxs-calendar' ></i>
-                                    <span class="text">Agendar</span>
+                                    <span class="text">Aprovados</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/clientes">
-                                    <i class='bx bxs-user' ></i>
-                                    <span class="text">Clientes</span>
+                                <a href="/mensagem">
+                                    <i class='bx bxs-inbox'></i>
+                                    <span class="text">Mensagem</span>
                                 </a>
                             </li>
 
@@ -131,6 +229,13 @@
                                     <span class="text">Realizados</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/perfil">
+                                    <i class='bx bxs-user' ></i>
+                                    <span class="text">Perfil</span>
+                                </a>
+                            </li>
+
                         </ul>
                         <ul class="side-menu">
                             <li>
@@ -146,8 +251,10 @@
                                 </a>
                             </li>
                         </ul>
-                    </section>                        
-                    @else 
+                    </section>
+                    
+                    
+                    @elseif(session('forn_info'))
                         <ul class="side-menu top">
                             <li class="active">
                                 <a href="/">
@@ -182,6 +289,8 @@
                                 </a>
                             </li>
                         </ul>
+                @else
+                <h3><a href="/"><span>Voltar para home</span></a></h3>
                 @endif
         </section>
         <!-- END OF SIDEBAR -->
@@ -191,9 +300,6 @@
             <!-- NAVBAR -->
             <nav>
                 <i class='bx bx-menu' ></i>
-                <!--?php 
-                    if (isset($informacoes)) {//tem uma sessão
-                ?-->
                 <form action="#">
                     <div class="form-input">
                         <input type="search" placeholder="Pesquisar...">
@@ -201,72 +307,44 @@
                     </div>
                 </form>
                 <a href="/clientes" class="notification">
-                <!--?php 
-                        if (count($cliente) > 0) {
-                ?>
-                            <i class='bx bxs-user' ></i>
-                <--?php
-                            foreach($cliente as $c) {
-                ?>
-                                <span class="num"><-?php echo $c['numCli']; ?--></span>
-                <!--?php   		
-                            }
-                        }else {
-                ?-->
                             <i class='bx bxs-user' ></i>
                             <span class="num">0</span>
-                <!--?php   }
-                ?-->
                 </a>
                 <a href="./agendar" class="notification">
-                <!--?php 
-                        if (count($agen) > 0) {
-                ?>
-                            <i class='bx bxs-calendar' ></i>
-                <--?php
-                            foreach($agen as $a) {
-                ?>
-                                <span class="num"><-?php echo $a['numAgen']; ?></span>
-                <--?php   		
-                            }
-                        }else {
-                ?-->
                             <i class='bx bxs-calendar' ></i>
                             <span class="num">0</span>
-                <!--?php   }
-                ?-->
-                </a>
+               </a>
                 <a href="/comentarios" class="notification">
-                <!--?php 
-                        if (count($comen) > 0) {
-                ?>
-                            <i class='bx bxs-inbox' ></i>
-                <--?php
-                            foreach($comen as $c) {
-                ?>
-                                <span class="num"><-?php echo $c['numCom']; ?></span>
-                <-?php   		
-                            }
-                        }else {
-                ?-->
                             <i class='bx bxs-inbox' ></i>
                             <span class="num">0</span>
-                <!--?php   }
-                ?-->
+
                 </a>
                 
                     <a href="#" class="nav-link">
-                        <!--?php
-                            echo $informacoes['nomeUsu'];
-                        ?-->
+
                     </a>
-                    <a href="#" class="profile">
-                        <img src="/imagens/usuarios/<!--?php echo $informacoes['foto_capa']; ?-->">
-                    </a>
+                    @if(session('user_info'))
+                        <a href="#" class="profile">
+                            <img src="/img/teste/perfil.png">
+                        </a>
+                    @elseif(session('cliente_info'))
+                            @if(empty($fotosDePerfil))
+
+                            <a href="/perfil" class="profile">
+                                    
+                                    <img src="/img/teste/perfil.png">
+                                </a>
+                            @else
+                                <a href="/admin" class="profile">
+                                    <img src="/img/teste/{{$fotosDePerfil[0]->nomeImg}}">
+                                </a>
+                            
+                            @endif
+                    @endif
                 <!--?php   
                     }
                 ?-->
-                <input type="checkbox" id="switch-mode" hidden>
+                <input type="checkbox" name="switch-mode" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label>
             </nav>
             <!-- NAVBAR -->        
@@ -275,13 +353,8 @@
         <!-- JavaScript -->
         <script src="/js/admin.js"></script>
 
+        
         @yield('content')
- 
-        <!--section class="footer">  
-            <div class="credit">
-                <p>&copy; Copright 2023 Todos os Direitos Reservados </p>
-                <span>PILUKA</span>
-            </div>
-        </section-->
+
     </body>
 </html>

@@ -26,12 +26,12 @@
         <div class="novoReg">
             <div class="row">
                 <div class="hero">
-                    <form action="/espaco" method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="/espaco_create" enctype="multipart/form-data">
                         @csrf
                         <h1 class="heading">Registrar um novo salão</h1>
  
                         <div class="input-group">
-                            <input type="file" id="foto" name="foto" class="from-control-file">
+                            <input type="file" id="foto" name="foto" class="from-control-file" required>
                             <!--label for="foto">Foto Salão:</label-->
                         </div>
                         
@@ -80,12 +80,7 @@
                         </div>
                         <center>
                             <div>
-                                <button class="btn">
-                                    <a href="/espaco">
-                                        <i class="fas fa-paper-plane"></i> 
-                                            VOLTAR
-                                    </a>
-                                </button>
+                              
                                 <button value="REGISTRAR" class="btn" ><i class="fas fa-paper-plane">REGISTRAR</i></button>
                             </div>
                         </center>

@@ -38,13 +38,13 @@
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <!--?php
-                        if (isset($_SESSION['id_admin'])) {
-                    ?-->
-                            <a href="{{route('usuario_novo')}}" onclick="confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')" class="btn">novo utilizador</a>
-                    <!--?php
-                        }
-                    ?-->
+                    
+                        @if(session('user_info')[0]->tipo!="Admin")
+                            <a href="{{route('funcionario_novo')}}" onclick="return confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')" class="btn">novo utilizador</a>
+                        @else
+                            <a href="{{route('usuario_novo')}}" onclick="return confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')" class="btn">novo utilizador</a>
+                        @endif
+                    
                         <a href="/espaco/novo" class="btn">novo espaco</a>
                 </div>
 					<table>
@@ -55,7 +55,7 @@
                                 <td>NOME</td>
                                 <td>EMAIL</td>
                                 <td>PASSWORD</td>
-                                <td>NIVEL</td>
+                                <td>Tipo De Usuario</td>
                             </tr>
                         </thead>
 
@@ -66,29 +66,37 @@
                                 
                                         <tr>
                                             <td>
-                                                <img src="/img/paulo.png" alt="foto_de_capa">
+                                                <img src="/img/teste/perfil.png" alt="foto_de_capa">
                                             </td>
                                             <td>{{$Usr->id}}</td>
                                             <td>{{$Usr->name}}</td>
                                             <td>{{$Usr->email}}</td>
                                             <td>***************</td>
-                                            <td>{{$Usr->email}}</td>
+                                            <td>{{$Usr->tipo}}</td>
                                             <td>
                                                  <a href="#" id='$id' onclick="visUsuario($id)">
                                                    <span class="icon">
                                                         <i class="bx bx-show-alt" style="color: #006400;"></i>
                                                     </span>
                                                 </a>
-                                               <!--?php
-                                                    if (isset($_SESSION['id_fun']) || isset($_SESSION['id_forn'])) {
-                                                        //verificando se é o usuario
-                                                ?-->
+                                               
+                                                    
+                                                        
+                                               
                                                         |
-                                                        <a href="#">
-                                                            <span class="icon">
-                                                                    <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
-                                                            </span>
-                                                        </a>
+                                                        @if (session('user_info')[0]->tipo=="Admin" || session('user_info')[0]->tipo=="Gerente")
+                                                            <a href="usuario_editar?id={{$Usr->id}}" onclick="return confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')">
+                                                                <span class="icon">
+                                                                        <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
+                                                                </span>
+                                                            </a>
+                                                        @else
+                                                            <a href="#" onclick="return confirm('Você tem permissão para esta ação que deseja executar? se não sabe contacta um Administrador para ajudar-lo')">
+                                                                <span class="icon">
+                                                                        <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
+                                                                </span>
+                                                            </a>
+                                                        @endif
                                                         |
                                                         <a href="#">
                                                             <span class="icon">

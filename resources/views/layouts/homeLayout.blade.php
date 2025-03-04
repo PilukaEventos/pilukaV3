@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,7 +36,6 @@
    
 </head>
 <body>
-
     <!-- header -->
     <header class="header">
 
@@ -47,11 +44,11 @@
             <nav id="categoria">
                 <ul style="bg-color:grey;">
                     <hr/>   
-                    <li><a href="#"><h6>Salões</h6></a></li> |
-                    <li><a href="#"><h6>Decorações</h6></a></li> |
-                    <li><a href="#"><h6>Fotografos</h6></a></li> |
-                    <li><a href="#"><h6>Djs</h6></a></li>|
-                    <li><a href="#"><h6>Buffet</h6></a></li>
+                    <li><a href="#salao" id="salao"><h6>Salões</h6></a></li> |
+                    <li><a href="/home#servicos" id="decoracao"><h6>Decorações</h6></a></li> |
+                    <li><a href="/home#servicos" id="fotografia"><h6>Fotografos</h6></a></li> |
+                    <li><a href="/home#servicos" id="musica"><h6>Djs</h6></a></li>|
+                    <li><a href="/home#servicos" id="comida"><h6>Buffet</h6></a></li>
                     <hr/>
                 </ul>
             </nav>
@@ -65,20 +62,15 @@
                 <a href="./sobre">sobre nós</a>
                 {{--tem uma sessão--}}
                 @if(session('user_info'))
+                <a href="/admin">Administrador</a>
                         <div class="user_info_menu profile">
                     <ul class="dropbtn">
-                        
-                        <li class="dropdown">
-                        <img class="profile dropbtn" src="./img/paulo.png">
-                        
-                            <div class="dropdown-content">
-                            <a href="{{route('logout')}}">Sair</a>    
-                            <a href="{{route('admin')}}">Administrativo</a>
-                                
-                            </div>
+                      
+                        <li>
+                            <a href="/admin"><img class="profile dropbtn" src="./img/paulo.png"></a>
                         </li>
                         <li >
-                        <p href="{{route('admin')}}" class="dropdown">{{session('user_info')->name}}</p>
+                        <p href="{{route('admin')}}" class="dropdown"></p>
                         </li> 
                     </ul>
                 </div>
@@ -89,7 +81,6 @@
                     <a href="./entrar">ENTRAR</a>
                
                 </div>
-              
                @endif
                 <input type="checkbox" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label>
@@ -108,12 +99,7 @@
                      <li><a href=""> REGISTAR-SE </a></li>
                      <li><a href=""> SOBRE NOS</a></li>
                      <hr>
-                     
-                        
-                     
                         <li><a href="">ENTRAR</a></li>
-                     
-                     
                      <hr>
                   </ul>
                </nav>
@@ -121,14 +107,10 @@
          </div>
         <!-- NAVBAR -->
     </header>
-
     @yield('content')
-
     <!-- footer -->
     <section class="footer">
-
         <div class="box-container">
-
             <div class="box">
                 <h3>Links para Contacto</h3>
                 <a href="#"> <i class="fas fa-phone"></i> +244-929-080-952 </a>

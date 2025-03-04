@@ -634,6 +634,7 @@ header .navbar #switch-mode:checked + .switch-mode::before {
     border-radius: var(--radius);
     box-shadow: var(--box-shadow);
     border: 1px solid var(--yellow);
+    padding: 2%;
 }
 
 .sobre .row .image{
@@ -642,16 +643,18 @@ header .navbar #switch-mode:checked + .switch-mode::before {
 }
 
 .sobre .row .image img{
-    width: 100%;
+    width: 80%;
     object-fit: cover;
 }
 
 .sobre .row .content{
     flex: 1 1 51rem;
+    
+    
 }
 
 .sobre .row .content h3{
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--red);
     padding: 2rem 0;
     text-align: center;
@@ -1445,7 +1448,7 @@ h1:hover::before{
 /*************** media queries *******************/
 
 /*************** MODO TABLET ******************/
-@media (max-width:930px){
+@media (max-width:88rem){
 
     .navbarMobile{
         width:100% !important;
@@ -1474,7 +1477,7 @@ h1:hover::before{
         
     }
     i{
-        font-size: 4rem;
+        font-size: 1.2rem;
         color: var(--yellow);
     }
    nav{
@@ -1588,18 +1591,95 @@ h1:hover::before{
         padding: 1rem;
         padding-top: 15%;
     }
+            /**************** planos ****************/
 
-}
-/************ disponibilidade *************/
+            .planos .row .image{
+                width: 20%;
+                padding-left: 20px;
+            }
+        
+            .planos .row .image img{
+                width: 100%;
+                object-fit: cover;
+            }
+        
+            .planos .row .content{
+                flex: 1 1 51rem;
+            }
+        
+            .planos .row .content h3{
+                font-size: 2rem;
+                color: var(--red);
+                padding: 2rem 0;
+                text-align: center;
+            }
+        
+            .planos .row .content p{
+                font-size: 1.6rem;
+                color: var(--dark);
+                padding: 1.5rem 2rem;
+                line-height: 1.8;
+                text-align: justify;
+                text-align: center;
+            }
+        
+            .planos .row .content p span{
+                color: var(--red);
+            }
+            /************** sobre *********/
+            .sobre .row{
+                width: 100%;
+                height: 600px;
+                padding: 5rem;
+                box-sizing: border-box;
+                
+            }
+            .sobre .row .image{
+                width: 80%;
+                padding-left: 20px;
+            }
+            
+            .sobre .row .image img{
+                width: 80%;
+                object-fit: cover;
+            }
+            .sobre .row .content p{
+                font-size: 1.6rem;
+                color: var(--dark);
+                padding: 1.5rem 2rem;
+                line-height: 1.8;
+                text-align: justify;
+            }
+            .salao .slide .content p{
+                height: 1.2rem;
+                font-size: 1.6rem;
+                color: var(--dark);
+                padding: .5rem 0;
+                line-height: 1.5;
+                text-align: justify;
+            }
+        /************** previsualizar imagem *********/
+            .perguntas .row .content .box p{
+                font-size: 1.6rem;
+                padding: 1.5rem 2rem;
+                line-height: 2;
+                color: var(--dark);
+                text-align: justify;
+            }
+            
+            /************ disponibilidade *************/
 
 .disponibilidade form .box p{
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--red);
     text-align: justify;
 }
 
+}
+
+
 /*************** MODO TELEMOVEL  *******************/
-@media (max-width: 450px){
+@media (max-width:78rem){
 
     html{
         font-size: 40%;
@@ -1621,7 +1701,7 @@ h1:hover::before{
     }
 
     .header .navbar a{
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         margin: 0.2rem 0.5rem;
     }
 
@@ -1639,17 +1719,18 @@ h1:hover::before{
     }
     
     .disponibilidade .row .hero form .rows .input-group{
-        margin-bottom: 20px;
-        position: absolute;
+        margin-bottom: .2rem;
+        justify-content: space-between;
+        position: relative;
         width: 100%;
-        display: block;
+        display: flex;
     }
     
     .disponibilidade .row .hero .rows .input-group form input,
     .disponibilidade .row .hero .rows .input-group form select,
     .disponibilidade .row .hero .rows .input-group form fieldset, 
     .disponibilidade .row .hero .rows .input-group form textarea{
-        display: block;
+        display: flex;
         width: 100%;
         padding: 10px;
         outline: none;
@@ -1658,7 +1739,8 @@ h1:hover::before{
         border-radius: var(--radius);
         border: 1px solid var(--yellow);
         font-size: 15px;
-        position: absolute;
+        position: relative;
+        
     }
     
     .disponibilidade .row .hero form label{
@@ -1670,8 +1752,9 @@ h1:hover::before{
         color: var(--red);
         transition: 0.2s;
         pointer-events: none;
-        font-size: 1em;
+        font-size: 1rem;
         text-transform: uppercase;
+        z-index: 10;
     }
     
     .disponibilidade .row .hero form button{
@@ -1681,6 +1764,80 @@ h1:hover::before{
         cursor: pointer;
     }
     
-    
+            /**************** planos ****************/
+
+            .planos .row .image{
+                width: 20%;
+                padding-left: 20px;
+            }
+        
+            .planos .row .image img{
+                width: 100%;
+                object-fit: cover;
+            }
+        
+            .planos .row .content{
+                flex: 1 1 51rem;
+            }
+        
+            .planos .row .content h3{
+                font-size: 2rem;
+                color: var(--red);
+                padding: 2rem 0;
+                text-align: center;
+            }
+        
+            .planos .row .content p{
+                font-size: 1.2rem;
+                color: var(--dark);
+                padding: 1.5rem 2rem;
+                line-height: 1.8;
+                text-align: justify;
+                text-align: center;
+            }
+        
+            .planos .row .content p span{
+                color: var(--red);
+            }
+            /************** sobre *********/
+            .sobre .row{
+                width: 100%;
+                height: 50vh;
+                padding: 4rem;
+                box-sizing: border-box;
+                
+            }
+            .sobre .row .image{
+                width: 80%;
+                padding-left: 20px;
+            }
+            
+            .sobre .row .image img{
+                width: 20rem;
+                object-fit: cover;
+            }
+            .sobre .row .content p{
+                font-size: 1.2rem;
+                color: var(--dark);
+                padding: 1.5rem 2rem;
+                line-height: 1.8;
+                text-align: justify;
+            }
+            .salao .slide .content p{
+                height: 1.2rem;
+                font-size: 1.2rem;
+                color: var(--dark);
+                padding: .5rem 0;
+                line-height: 1.5;
+                text-align: justify;
+            }
+        /************** previsualizar imagem *********/
+            .perguntas .row .content .box p{
+                font-size: 1.2rem;
+                padding: 1.5rem 2rem;
+                line-height: 2;
+                color: var(--dark);
+                text-align: justify;
+            }
 
 }
