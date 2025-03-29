@@ -32,93 +32,65 @@
                 <div class="container-fluid">
                     <div class="row">
                         @if(session('msg'))
-                            <p class="msg">{{session('msg')}}</p>
+                            <p class="msg"><span>{{session('msg')}}</span></p>
                         @endif
                         @yield('content')
                     </div>
                 </div>
                 <div class="cardHeader">
-                    <!--?php
-                        if (isset($_SESSION['id_admin'])) {
-                    ?-->
-                            <a href="/espaco/novo" class="btn">novo espaço</a>
-                    <!--?php
-                        }
-                    ?-->
-                        <a href="/espaco/create_plano" class="btn">novo plano</a>
+                    
+                    @if(session('user_info'))
+                        <a href="/espaco/novo" class="btn">Novo Espaço</a>
+                        <a href="/espaco/create_plano" class="btn">Novo Plano</a>
+                    @endif
+                        <a href="/create_gallery" class="btn">+ Adicionar Fotos</a>
                 </div>
-					<table>
+                <br>
+                    <table>
                         <thead>
                             <tr>
                                 <td>FOTO</td>
-                                <td>NOME</td>
+                                <td>&nbsp;ID</td>
+                                <td>SALÂO</td>
                                 <td>TELEFONE</td>
                                 <td>EMAIL</td>
                                 <td>REDES</td>
-                                <td>CONVIDADOS</td>
-                                <td>PREÇO</td>
+                                <td>LOCALIZAÇÃO</td>
+                                <td>&nbsp;Nº MAX</td>
                                 <td>ACÇÕES</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                @if (count($espacos) > 0)
-                                    @foreach($espacos as $v)
-                                
+                                @if(count($espacos) > 0)
+                                    @foreach($espacos as $esp)
+                                    
                                         <tr>
+                                        <td><img src="/img/{{$esp->fotoEsp}}" alt="" ></td>
+                                            <td>{{$esp->idEsp}}</td>
+                                            <td>{{$esp->nomeEsp}}</td>
+                                            <td>{{$esp->telefoneEsp}}</td>
+                                            <td>{{$esp->emailEsp}}</td>
+                                            <td>{{$esp->redes}}</td>
+                                            <td>{{$esp->moradaEsp}}</td>
+                                            <td>3000</td>
                                             <td>
-                                                <img src="/img/espacos/{{$v->foto}}" alt="{{$v->nomeSalao}}">
-                                            </td>
-                                            <td>{{$v->nomeSalao}}</td>
-                                            <td>{{$v->telefoneSalao}}</td>
-                                            <td>{{$v->emailSalao}}</td>
-                                            <td>{{$v->redesSalao}}</td>
-                                            <td>{{$v->numConv}}</td>
-                                            <td>{{$v->precoPla}}</td>
-                                            <td>
-                                                 <a href="#" id='$id' onclick="visUsuario($id)">
-                                                   <span class="icon">
-                                                        <i class="bx bx-show-alt" style="color: #006400;"></i>
+                                                   
+                                                <a href="#">
+                                                    <span class="icon">
+                                                        <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
                                                     </span>
                                                 </a>
-                                               <!--?php
-                                                    if (isset($_SESSION['id_fun']) || isset($_SESSION['id_forn'])) {
-                                                        //verificando se é o usuario
-                                                ?-->
-                                                        |
-                                                        <a href="./editar_espaco.php?id=<!--?php echo $v['idEsp']; ?-->">
-                                                            <span class="icon">
-                                                                    <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
-                                                            </span>
-                                                        </a>
-                                                        |
-                                                        <a href="#">
-                                                            <span class="icon">
-                                                                <i class="bx bxs-trash-alt" style="color: #8B0000;"></i>
-                                                            </span>
-                                                            <span class="title"></span>
-                                                        </a>
-                                                <!--?php
-                                                    }elseif (isset($_SESSION['id_gerente']) || isset($_SESSION['id_admin'])) {
-                                                ?->
-                                                        |
-                                                        <a href="./editar_espaco.php?id=<--?php echo $v['idEsp']; ?->">
-                                                            <span class="icon">
-                                                                <i class="bx bxs-edit-alt" style="color: #00FFFF;"></i>
-                                                            </span>
-                                                        </a>
-                                                        |
-                                                        <a href="#">
-                                                            <span class="icon">
-                                                                <i class="bx bxs-trash-alt" style="color: #8B0000;"></i>
-                                                            </span>
-                                                            <span class="title"></span>
-                                                        </a>
-                                                <--?php
-                                                        }  
-                                                ?-->     
-                                            </td>
+                                                |
+                                                <a href="#">
+                                                    <span class="icon">
+                                                        <i class="bx bxs-trash-alt" ></i>
+                                                    </span>
+                                                    <span class="title"></span>
+                                                </a>
+                                                    
+                                                </td>
                                         </tr>
                                     @endforeach
                                 @else
@@ -127,7 +99,7 @@
                             </tr>
                                 
                         </tbody>
-                    </table>
+                    </table><br><br>
             </div>
         </div>
 	</main>

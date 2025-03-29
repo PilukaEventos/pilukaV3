@@ -59,3 +59,151 @@ nav#categoria  ul li{
     border:none;
 }
 input[type="checkbox"]{display: none;}
+
+
+/* Este codigo sera utilizado se o usuario iniciar sessao e estiver na home
+*Imagem
+*Admin
+*Sair
+*/
+
+/* Navbar styling */
+.user_info_menu {
+    
+    background-color:transparent;
+    font-family:(--poppins);
+    
+}
+
+.user_info_menu ul {
+    list-style: none;
+    display: flex;
+    padding: 2rem;
+    
+}
+
+.user_info_menu li {
+    position: relative;
+    justify-content: left;
+    justify-items: left;
+    
+}
+
+.user_info_menu a {
+    color:var(--red);
+    padding: 2rem;
+    text-decoration: none;
+    display: block;
+    text-align:left;
+}
+.user_info_menu p{
+        font-size: 1.5rem;
+        color: var(--red);
+        padding: 1rem;
+        text-align: center;    
+}
+
+/* Change background color on hover */
+.navbar a:hover {
+    background-color:transparent;
+}
+
+
+/* Dropdown Container  */
+.dropdown {
+    position: relative;
+    width: 100%;
+    
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width:100%;
+    color:var(--red);
+    z-index: 1;
+    margin:auto auto 0 -10rem;
+    
+}
+
+.dropdown-content a {
+    font-size: 1.5rem;
+    color:var(--red);
+    padding: 3rem 1rem 1rem 0;
+    
+}
+
+/* Hover effect for dropdown links */
+.dropdown-content a:hover {
+    background-color:transparent;
+    color:var(--red);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display:block;
+    color: (--yellow);
+}
+
+/************* search button ****************/
+
+.search-container {
+    font-family: var(--montserrat);
+    display: flex;
+    align-items: center;
+    float:right;
+    right: 8rem;
+  }
+  
+  .search-btn {
+    font-family: var(--montserrat);
+    padding: .8rem;
+    width: 4rem;
+    font-size: 14pt;
+    background-color: var(--red);
+    color:var(--yellow);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius:0 1.2rem 1.2rem 0;
+    
+  }
+  
+  .search-btn:hover {
+    background-color: var(--red);
+    color:var(--red);
+  }
+  
+  .search-box {
+    font-family: var(--montserrat);
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    width: 0;
+    height: 40px;
+    margin-right: -5rem;
+    float: right;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .search-box input {
+    font-family: var(--montserrat);
+    padding: 10px;
+    width: 30rem;
+    font-size: 14px;
+    border-radius: 2.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-left: -2rem;
+  }
+  
+  .search-box.active {
+    font-family: var(--montserrat);
+    width: 300px;
+    opacity: 1;
+  }
+
+  
+ /************* Light Gallery custom css*************/

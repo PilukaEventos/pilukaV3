@@ -72,8 +72,8 @@ var swiper = new Swiper(".gallery-slider", {
     loop:true,
     centeredSlides:true,
     autoplay: {
-        delay: 1500,
-        disableOnInteraction: false,
+        delay: 800,
+        disableOnInteraction: true,
     },
     pagination: {
         el: ".swiper-pagination",
@@ -84,10 +84,10 @@ var swiper = new Swiper(".gallery-slider", {
             slidesPerView: 1,
         },
         768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
         },
         991: {
-            slidesPerView: 4,
+            slidesPerView: 3,
         },
     },
 });
@@ -98,7 +98,7 @@ var swiper = new Swiper(".opniao-slider", {
     loop:true,
     centeredSlides:true,
     autoplay: {
-        delay: 7500,
+        delay: 1500,
         disableOnInteraction: false,
     },
     pagination: {
@@ -149,10 +149,67 @@ const loadImage = (e) => {
 
 imageField.addEventListener("change",loadImage);
 
-/************************ FUNCAO REDIRECIONAR ******************************/
+/************************ FUNCOES SERVICOS SELECIONADOS ******************************/
 
-let string = array();
 
-function RedirecionarPagina(string){
+    function servp1()
+    {
+        if (document.getElementById("servcheck1").checked==true) {
+            document.getElementById('servp1').style.color="#8B0000";
+            document.getElementById("servcheck1").checked=false;
+        }
+        else{
+            document.getElementById('servp1').style.color="#FFD700";
+            document.getElementById("servcheck1").checked=true;
+        }
+    }
+
+    function servp2()
+        {
+            if (document.getElementById("servcheck2").checked==true) {
+                document.getElementById('servp2').style.color="#8B0000";
+                document.getElementById("servcheck2").checked=false;
+            }
+            else{
+                
+                document.getElementById('servp2').style.color="#FFD700";
+                document.getElementById("servcheck2").checked=true;
+            }
+        }
+
+    function servp3(){
+            if (document.getElementById("servcheck3").checked==true) {
+                document.getElementById('servp3').style.color="#8B0000";
+                document.getElementById("servcheck3").checked=false;
+            }
+            else{
+                
+                document.getElementById('servp3').style.color="#FFD700";
+                document.getElementById("servcheck3").checked=true;
+            }
+        }
+
+    function servp4(){
+        if (document.getElementById("servcheck4").checked==true) {
+            document.getElementById('servp4').style.color="#8B0000";
+            document.getElementById("servcheck4").checked=false;
+        }
+        else{
+            
+            document.getElementById('servp4').style.color="#FFD700";
+            document.getElementById("servcheck4").checked=true;
+        }
+    }
     
-}
+    function servp5(){
+
+        if (document.getElementById("servcheck5").checked==true) {
+            document.getElementById('servp5').style.color="#8B0000";
+            document.getElementById("servcheck5").checked=false;
+        }
+        else{
+            
+            document.getElementById('servp5').style.color="#FFD700";
+            document.getElementById("servcheck5").checked=true;
+        }
+    } 

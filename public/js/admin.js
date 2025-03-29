@@ -1,5 +1,60 @@
 
 
+/************* o modo dark ****************/
+
+const contagem=document.getElementById('output')
+const btnclick=document.getElementById('clicks')
+let count=0
+
+
+    const switchMode = document.getElementById('switch-mode')  
+
+    sessionStorage.setItem("lightMode","lightMode")
+
+    switchMode.addEventListener('click',function () {
+    
+        if (this.checked) 
+        {
+            sessionStorage.setItem("darkMode","darkMode")
+            count=count+1
+            document.body.classList.add('dark')
+
+
+        }
+        else{
+            count=count-1
+            if (count<0) {
+                count=0
+                document.body.classList.remove('dark')
+            }
+
+            if (sessionStorage.setItem("darkMode","darkMode")==="darkMode")
+            {
+                document.body.classList.add('dark')
+            }
+            else{
+                document.body.classList.remove('dark')
+                sessionStorage.removeItem("darkMode","darkMode")
+            }
+            
+        }
+        
+    })
+    
+    if (sessionStorage.getItem('darkMode')==='darkMode')
+    {
+        document.body.classList.add('dark')
+    }
+    else
+    {
+        document.body.classList.remove('dark')
+    }
+
+
+
+const { isEmpty } = require("lodash");
+
+
 
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
@@ -80,12 +135,18 @@ window.addEventListener('resize', function () {
 
 
 
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
+	  /************* galeria admin code ****************/
+    
+	  document.addEventListener('DOMContentLoaded', function(){
+		lightGallery(document.getElementById('lightgallery'),{
+			selector:'a',
+			thumbnail:true,
+			autoplay:true,
+			zoom:true,
+		});
+	  })
+	 
+/****** BOTAO ATUALIZAR FOTO DO PERFIL DO CLIENTE ***************/
+			function atualizarfoto(){
+				document.getElementById('actualperfil').style.display='block';
+			}

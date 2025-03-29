@@ -1,4 +1,3 @@
-/************* Submenu Categoria ********************/
 let subMenu=document.getElementById('submenu')
 let menuDropDown=document.getElementById('navbar')
 
@@ -64,3 +63,27 @@ let count=0
     {
         document.body.classList.remove('dark')
     }
+/************* search button ****************/
+const contentSearchBox = document.getElementById("search-box")
+document.getElementById("search-btn").addEventListener("click",()=> {
+    
+    contentSearchBox.innerHTML+="<button class='btn' id='search-submit'><i class='fa-solid fa-magnifying-glass'></i></button>"
+    document.getElementById("search-btn").style.display="none"
+    var searchBox = document.getElementById("search-box")
+    searchBox.classList.toggle("active")=false
+    
+    if (searchBox.classList.toggle("active")==true) {
+        searchBox.classList.toggle("active")=false
+        document.getElementById("search-btn").style.borderRadius=`1.2rem 0 0 1.2rem`
+        
+    }
+        
+    else{
+        searchBox.classList.toggle("active")=true
+        document.getElementById("search-btn").style.borderRadius=`0 1.2rem 1.2rem 0`
+    }
+    
+    
+  });
+
+
